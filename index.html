@@ -2043,7 +2043,7 @@
     document.body.classList.add('js-ready');
 
     // ---- Calendly ----
-    Calendly && Calendly.initInlineWidgets();
+    if (typeof Calendly !== 'undefined') Calendly.initInlineWidgets();
 
     // ---- Navigation: scroll shrink + mobile menu ----
     const nav = document.getElementById('nav');
