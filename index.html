@@ -1941,7 +1941,8 @@
           <div
             class="calendly-inline-widget"
             data-url="https://calendly.com/info-equinoxwebsolutions/30min?background_color=1c1c1c&text_color=d4d4d4&primary_color=C9A84C"
-            style="min-width:320px; height:1050px;">
+            id="calendlyWidget"
+            style="min-width:320px; height:800px;">
           </div>
         </div>
       </div>
@@ -2033,6 +2034,14 @@
   <script>
     // Mark body as JS-ready so reveal animations activate
     document.body.classList.add('js-ready');
+
+    // Auto-resize Calendly widget to match its content height
+    window.addEventListener('message', function (e) {
+      if (e.data && e.data.event === 'calendly.page_height') {
+        const widget = document.getElementById('calendlyWidget');
+        if (widget) widget.style.height = e.data.payload.height + 'px';
+      }
+    });
 
     // ---- Calendly toggle ----
     const calendlyToggle = document.getElementById('calendlyToggle');
