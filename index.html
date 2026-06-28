@@ -1164,20 +1164,7 @@
       .about-stats { grid-template-columns: 1fr; }
     }
 
-    /* Calendly widget theming */
-    .calendly-wrap {
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1px solid rgba(201,168,76,0.2);
-    }
-    .calendly-inline-widget iframe {
-      border-radius: var(--radius-lg);
-    }
-
-    @media (min-width: 320px) and (max-width: 360px) {
+@media (min-width: 320px) and (max-width: 360px) {
       .container { padding: 0 16px; }
       .hero-title { font-size: 2rem; }
     }
@@ -1945,12 +1932,9 @@
         <p class="section-subtitle reveal reveal-delay-2">
           We will design your website, show it to you, and let you decide. No upfront cost, no pressure, no risk. The first step is a quick conversation.
         </p>
-        <div class="calendly-wrap reveal reveal-delay-3">
-          <div
-            class="calendly-inline-widget"
-            data-url="https://calendly.com/info-equinoxwebsolutions/30min?background_color=1c1c1c&text_color=d4d4d4&primary_color=C9A84C"
-            style="min-width:320px;height:660px;">
-          </div>
+        <div class="contact-buttons reveal reveal-delay-3">
+          <button onclick="Calendly.initPopupWidget({url:'https://calendly.com/info-equinoxwebsolutions/30min?background_color=1c1c1c&text_color=d4d4d4&primary_color=C9A84C'});return false;" class="btn btn-primary">Book a Free Call</button>
+          <a href="mailto:info.equinoxwebsolutions@gmail.com?subject=Website Enquiry" class="btn btn-outline">Contact Us</a>
         </div>
       </div>
     </div>
