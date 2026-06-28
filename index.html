@@ -1933,8 +1933,16 @@
           We will design your website, show it to you, and let you decide. No upfront cost, no pressure, no risk. The first step is a quick conversation.
         </p>
         <div class="contact-buttons reveal reveal-delay-3">
-          <button onclick="Calendly.initPopupWidget({url:'https://calendly.com/info-equinoxwebsolutions/30min?background_color=1c1c1c&text_color=d4d4d4&primary_color=C9A84C'});return false;" class="btn btn-primary">Book a Free Call</button>
+          <button id="calendlyToggle" class="btn btn-primary">Book a Free Call</button>
           <a href="mailto:info.equinoxwebsolutions@gmail.com?subject=Website Enquiry" class="btn btn-outline">Contact Us</a>
+        </div>
+
+        <div id="calendlyContainer" style="display:none; width:100%; max-width:900px; margin:40px auto 0; border-radius:16px; overflow:hidden; border:1px solid rgba(201,168,76,0.2);">
+          <div
+            class="calendly-inline-widget"
+            data-url="https://calendly.com/info-equinoxwebsolutions/30min?background_color=1c1c1c&text_color=d4d4d4&primary_color=C9A84C"
+            style="min-width:320px; height:700px;">
+          </div>
         </div>
       </div>
     </div>
@@ -2026,8 +2034,31 @@
     // Mark body as JS-ready so reveal animations activate
     document.body.classList.add('js-ready');
 
-    // ---- Calendly ----
-    if (typeof Calendly !== 'undefined') Calendly.initInlineWidgets();
+    // ---- Calendly toggle ----
+    const calendlyToggle = document.getElementById('calendlyToggle');
+    const calendlyContainer = document.getElementById('calendlyContainer');
+    let calendlyLoaded = false;
+
+    calendlyToggle.addEventListener('click', function () {
+      const isVisible = calendlyContainer.style.display !== 'none';
+      if (isVisible) {
+        calendlyContainer.style.display = 'none';
+        calendlyToggle.textContent = 'Book a Free Call';
+      } else {
+        calendlyContainer.style.display = 'block';
+        calendlyToggle.textContent = 'Hide Booking Form';
+        if (!calendlyLoaded) {
+          Calendly.initInlineWidget({
+            url: 'https://calendly.com/info-equinoxwebsolutions/30min?background_color=1c1c1c&text_color=d4d4d4&primary_color=C9A84C',
+            parentElement: calendlyContainer.querySelector('.calendly-inline-widget'),
+          });
+          calendlyLoaded = true;
+        }
+        setTimeout(() => {
+          calendlyContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    });
 
     // ---- Navigation: scroll shrink + mobile menu ----
     const nav = document.getElementById('nav');
