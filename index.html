@@ -137,13 +137,13 @@
       transform: translateY(-2px);
     }
 
-    /* Scroll reveal */
-    .reveal {
+    /* Scroll reveal — hidden only after JS marks body as ready */
+    body.js-ready .reveal {
       opacity: 0;
       transform: translateY(36px);
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
-    .reveal.visible {
+    body.js-ready .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
@@ -2039,6 +2039,9 @@
   ============================================= -->
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
   <script>
+    // Mark body as JS-ready so reveal animations activate
+    document.body.classList.add('js-ready');
+
     // ---- Calendly ----
     Calendly && Calendly.initInlineWidgets();
 
