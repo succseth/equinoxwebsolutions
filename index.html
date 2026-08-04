@@ -1,2179 +1,1253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Equinox Web Solutions - Premium Web Design for Small Business</title>
-  <meta name="description" content="Equinox Web Solutions builds professional, mobile-friendly websites for small businesses across the United States. Free website build, affordable monthly plans." />
-
-  <!-- Favicon: logomark as base64 SVG -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiMxMTExMTEiLz48bGluZSB4MT0iMTIiIHkxPSIzMiIgeDI9IjUyIiB5Mj0iMzIiIHN0cm9rZT0iI0M5QTg0QyIgc3Ryb2tlLXdpZHRoPSIyIi8+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQzlBODRDIiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMjAgMTZhMTYgMTYgMCAwIDEgMjQgMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIvPjxwYXRoIGQ9Ik0yMCA0OGExNiAxNiAwIDAgMCAyNCAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNDOUE4NEMiIHN0cm9rZS13aWR0aD0iMS41Ii8+PC9zdmc+" />
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-
-  <style>
-    /* =============================================
-       CSS CUSTOM PROPERTIES
-    ============================================= */
-    :root {
-      --black:       #0a0a0a;
-      --charcoal:    #141414;
-      --charcoal-2:  #1c1c1c;
-      --charcoal-3:  #242424;
-      --gold:        #C9A84C;
-      --gold-light:  #e0c070;
-      --gold-dim:    rgba(201, 168, 76, 0.15);
-      --gold-glow:   rgba(201, 168, 76, 0.35);
-      --white:       #ffffff;
-      --grey-light:  #d4d4d4;
-      --grey-mid:    #8a8a8a;
-      --grey-dark:   #3a3a3a;
-      --font-body:   'Inter', sans-serif;
-      --font-head:   'Playfair Display', serif;
-      --transition:  0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      --radius:      8px;
-      --radius-lg:   16px;
-    }
-
-    /* =============================================
-       RESET & BASE
-    ============================================= */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; font-size: 16px; }
-
-    body {
-      background-color: var(--black);
-      color: var(--grey-light);
-      font-family: var(--font-body);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    h1, h2, h3, h4 { font-family: var(--font-head); color: var(--white); line-height: 1.2; }
-
-    a { color: var(--gold); text-decoration: none; transition: color var(--transition); }
-    a:hover { color: var(--gold-light); }
-
-    img { display: block; max-width: 100%; }
-
-    ::selection { background: var(--gold); color: var(--black); }
-
-    /* =============================================
-       UTILITY
-    ============================================= */
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .section-label {
-      display: inline-block;
-      font-family: var(--font-body);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 16px;
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 20px;
-    }
-
-    .section-subtitle {
-      font-size: 1.05rem;
-      color: var(--grey-mid);
-      max-width: 560px;
-      line-height: 1.8;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 32px;
-      border-radius: var(--radius);
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      cursor: pointer;
-      border: none;
-      transition: all var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-primary {
-      background: var(--gold);
-      color: var(--black);
-    }
-    .btn-primary:hover {
-      background: var(--gold-light);
-      color: var(--black);
-      box-shadow: 0 0 28px var(--gold-glow);
-      transform: translateY(-2px);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--white);
-      border: 1px solid rgba(255,255,255,0.25);
-    }
-    .btn-outline:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-      box-shadow: 0 0 20px var(--gold-dim);
-      transform: translateY(-2px);
-    }
-
-    /* Scroll reveal — hidden only after JS marks body as ready */
-    body.js-ready .reveal {
-      opacity: 0;
-      transform: translateY(36px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    body.js-ready .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-
-    /* =============================================
-       NAVIGATION
-    ============================================= */
-    #nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      padding: 24px 0;
-      transition: padding var(--transition), background var(--transition), backdrop-filter var(--transition);
-    }
-
-    #nav.scrolled {
-      padding: 14px 0;
-      background: rgba(10, 10, 10, 0.88);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(201, 168, 76, 0.12);
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    /* Logo */
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-
-    .nav-logo-mark svg { display: block; }
-
-    .nav-logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
-    .nav-logo-text .wordmark-top {
-      font-family: var(--font-head);
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--white);
-      letter-spacing: 0.06em;
-    }
-    .nav-logo-text .wordmark-bottom {
-      font-family: var(--font-body);
-      font-size: 0.6rem;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    /* Nav links */
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--grey-light);
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      transition: color var(--transition);
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -3px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: var(--gold);
-      transition: width var(--transition);
-    }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-links a:hover::after { width: 100%; }
-
-    .nav-cta {
-      padding: 10px 22px !important;
-      font-size: 0.82rem !important;
-    }
-
-    /* Hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--white);
-      border-radius: 2px;
-      transition: all var(--transition);
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    /* Mobile menu */
-    .mobile-menu {
-      display: none;
-      flex-direction: column;
-      gap: 0;
-      background: rgba(14, 14, 14, 0.97);
-      backdrop-filter: blur(20px);
-      border-top: 1px solid rgba(201,168,76,0.15);
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.4s ease;
-    }
-    .mobile-menu.open { max-height: 480px; }
-    .mobile-menu a {
-      display: block;
-      padding: 16px 24px;
-      color: var(--grey-light);
-      font-size: 0.95rem;
-      font-weight: 500;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      transition: color var(--transition), background var(--transition);
-    }
-    .mobile-menu a:hover { color: var(--gold); background: rgba(201,168,76,0.05); }
-
-    /* =============================================
-       HERO
-    ============================================= */
-    #hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      background: var(--black);
-    }
-
-    /* Animated background canvas */
-    .hero-shapes {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .shape {
-      position: absolute;
-      opacity: 0.08;
-    }
-
-    .shape-1 {
-      width: 520px;
-      height: 520px;
-      top: -120px;
-      right: -100px;
-      animation: float1 18s ease-in-out infinite, morph1 24s ease-in-out infinite;
-    }
-    .shape-2 {
-      width: 360px;
-      height: 360px;
-      bottom: -60px;
-      left: -80px;
-      opacity: 0.06;
-      animation: float2 22s ease-in-out infinite, morph2 30s ease-in-out infinite;
-    }
-    .shape-3 {
-      width: 200px;
-      height: 200px;
-      top: 40%;
-      left: 30%;
-      opacity: 0.05;
-      animation: float3 14s ease-in-out infinite;
-    }
-    .shape-4 {
-      width: 140px;
-      height: 140px;
-      top: 20%;
-      right: 28%;
-      opacity: 0.07;
-      animation: float4 16s ease-in-out infinite;
-    }
-    .shape-5 {
-      width: 80px;
-      height: 80px;
-      bottom: 25%;
-      right: 15%;
-      opacity: 0.09;
-      animation: float1 12s ease-in-out infinite reverse;
-    }
-
-    /* Horizon line */
-    .hero-horizon {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 50%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.18), transparent);
-      pointer-events: none;
-    }
-
-    @keyframes float1 {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      33% { transform: translateY(-28px) rotate(8deg); }
-      66% { transform: translateY(14px) rotate(-5deg); }
-    }
-    @keyframes float2 {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      40% { transform: translateY(22px) rotate(-10deg); }
-      70% { transform: translateY(-18px) rotate(6deg); }
-    }
-    @keyframes float3 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(20px, -20px) scale(1.1); }
-    }
-    @keyframes float4 {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      50% { transform: translate(-15px, 15px) rotate(45deg); }
-    }
-    @keyframes morph1 {
-      0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
-      33% { border-radius: 70% 30% 50% 50% / 30% 70% 40% 60%; }
-      66% { border-radius: 50% 50% 30% 70% / 60% 40% 70% 30%; }
-    }
-    @keyframes morph2 {
-      0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-      50% { border-radius: 30% 70% 70% 30% / 50% 60% 40% 50%; }
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding-top: 120px;
-      padding-bottom: 80px;
-    }
-
-    .hero-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 28px;
-    }
-    .hero-eyebrow-line {
-      width: 40px;
-      height: 1px;
-      background: var(--gold);
-    }
-    .hero-eyebrow span {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .hero-title {
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.08;
-      margin-bottom: 28px;
-      max-width: 800px;
-    }
-    .hero-title em {
-      font-style: italic;
-      color: var(--gold);
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--grey-mid);
-      max-width: 520px;
-      margin-bottom: 48px;
-      line-height: 1.8;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .hero-scroll-hint {
-      position: absolute;
-      bottom: 36px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      opacity: 0.4;
-      animation: scrollHint 2.5s ease-in-out infinite;
-    }
-    .hero-scroll-hint span {
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--grey-mid);
-    }
-    @keyframes scrollHint {
-      0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.4; }
-      50% { transform: translateX(-50%) translateY(6px); opacity: 0.7; }
-    }
-
-    /* =============================================
-       ABOUT
-    ============================================= */
-    #about {
-      padding: 120px 0;
-      background: var(--charcoal);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .about-visual {
-      position: relative;
-    }
-
-    .about-svg-frame {
-      width: 100%;
-      aspect-ratio: 1;
-      max-width: 440px;
-    }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-top: 48px;
-    }
-
-    .stat-card {
-      background: var(--charcoal-2);
-      border: 1px solid var(--grey-dark);
-      border-radius: var(--radius);
-      padding: 24px;
-      transition: border-color var(--transition);
-    }
-    .stat-card:hover { border-color: var(--gold); }
-
-    .stat-number {
-      font-family: var(--font-head);
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--gold);
-      display: block;
-      margin-bottom: 4px;
-    }
-    .stat-label {
-      font-size: 0.8rem;
-      color: var(--grey-mid);
-      letter-spacing: 0.04em;
-    }
-
-    .about-text p {
-      font-size: 1.05rem;
-      line-height: 1.9;
-      color: var(--grey-light);
-      margin-bottom: 20px;
-    }
-
-    .about-text p:last-child { margin-bottom: 0; }
-
-    /* =============================================
-       SERVICES
-    ============================================= */
-    #services {
-      padding: 120px 0;
-      background: var(--black);
-    }
-
-    .services-header {
-      text-align: center;
-      margin-bottom: 72px;
-    }
-    .services-header .section-subtitle { margin: 0 auto; }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-
-    .service-card {
-      background: var(--charcoal);
-      border: 1px solid var(--grey-dark);
-      border-radius: var(--radius-lg);
-      padding: 40px 36px;
-      transition: all var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      opacity: 0;
-      transition: opacity var(--transition);
-    }
-    .service-card:hover {
-      border-color: rgba(201,168,76,0.3);
-      transform: translateY(-6px);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 40px var(--gold-dim);
-    }
-    .service-card:hover::before { opacity: 1; }
-
-    .service-icon {
-      width: 56px;
-      height: 56px;
-      background: var(--gold-dim);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 28px;
-      transition: background var(--transition);
-    }
-    .service-card:hover .service-icon { background: rgba(201,168,76,0.25); }
-
-    .service-gold-line {
-      width: 40px;
-      height: 2px;
-      background: var(--gold);
-      margin-bottom: 20px;
-      border-radius: 2px;
-    }
-
-    .service-card h3 {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 14px;
-    }
-
-    .service-card p {
-      font-size: 0.92rem;
-      color: var(--grey-mid);
-      line-height: 1.8;
-    }
-
-    /* =============================================
-       PORTFOLIO
-    ============================================= */
-    #portfolio {
-      padding: 120px 0;
-      background: var(--charcoal);
-    }
-
-    .portfolio-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 56px;
-      flex-wrap: wrap;
-      gap: 24px;
-    }
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
-    }
-
-    .project-card {
-      background: var(--charcoal-2);
-      border: 1px solid var(--grey-dark);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      transition: all var(--transition);
-      cursor: pointer;
-    }
-    .project-card:hover {
-      border-color: var(--gold);
-      transform: translateY(-6px);
-      box-shadow: 0 28px 64px rgba(0,0,0,0.45), 0 0 40px var(--gold-dim);
-    }
-
-    .project-image {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: var(--charcoal-3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .project-image-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Subtle grid pattern for placeholder */
-    .project-image::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
-      background-size: 32px 32px;
-    }
-
-    .project-placeholder-icon {
-      position: relative;
-      z-index: 1;
-      opacity: 0.2;
-    }
-
-    .project-info {
-      padding: 28px;
-    }
-
-    .project-tag {
-      display: inline-block;
-      padding: 4px 12px;
-      background: var(--gold-dim);
-      border: 1px solid rgba(201,168,76,0.2);
-      border-radius: 99px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 12px;
-    }
-
-    .project-info h3 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .project-info p {
-      font-size: 0.88rem;
-      color: var(--grey-mid);
-      margin-bottom: 20px;
-    }
-
-    .btn-sm {
-      padding: 9px 20px;
-      font-size: 0.8rem;
-    }
-
-    /* =============================================
-       TESTIMONIALS
-    ============================================= */
-    #testimonials {
-      padding: 120px 0;
-      background: var(--black);
-    }
-
-    .testimonials-header {
-      text-align: center;
-      margin-bottom: 72px;
-    }
-    .testimonials-header .section-subtitle { margin: 0 auto; }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-
-    .testimonial-card {
-      background: var(--charcoal);
-      border: 1px solid var(--grey-dark);
-      border-radius: var(--radius-lg);
-      padding: 40px 36px;
-      transition: all var(--transition);
-      position: relative;
-    }
-    .testimonial-card:hover {
-      border-color: rgba(201,168,76,0.25);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-    }
-
-    .testimonial-stars {
-      display: flex;
-      gap: 4px;
-      margin-bottom: 24px;
-    }
-
-    .testimonial-quote {
-      font-size: 1.85rem;
-      color: var(--gold);
-      font-family: var(--font-head);
-      line-height: 1;
-      margin-bottom: 16px;
-      opacity: 0.6;
-    }
-
-    .testimonial-text {
-      font-size: 0.96rem;
-      color: var(--grey-light);
-      line-height: 1.85;
-      margin-bottom: 32px;
-      font-style: italic;
-    }
-
-    .testimonial-divider {
-      width: 36px;
-      height: 1px;
-      background: var(--gold);
-      margin-bottom: 20px;
-      opacity: 0.5;
-    }
-
-    .testimonial-name {
-      font-family: var(--font-body);
-      font-weight: 600;
-      font-size: 0.92rem;
-      color: var(--white);
-      margin-bottom: 4px;
-    }
-    .testimonial-business {
-      font-size: 0.78rem;
-      color: var(--grey-mid);
-      letter-spacing: 0.04em;
-    }
-
-    /* =============================================
-       PRICING
-    ============================================= */
-    #pricing {
-      padding: 120px 0;
-      background: var(--charcoal);
-    }
-
-    .pricing-header {
-      text-align: center;
-      margin-bottom: 72px;
-    }
-    .pricing-header .section-subtitle { margin: 0 auto; }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      align-items: start;
-    }
-
-    .pricing-card {
-      background: var(--charcoal-2);
-      border: 1px solid var(--grey-dark);
-      border-radius: var(--radius-lg);
-      padding: 44px 36px;
-      transition: all var(--transition);
-      position: relative;
-    }
-    .pricing-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 28px 64px rgba(0,0,0,0.4);
-    }
-
-    .pricing-card.featured {
-      border-color: var(--gold);
-      background: var(--charcoal);
-      box-shadow: 0 0 60px rgba(201,168,76,0.12);
-    }
-    .pricing-card.featured:hover {
-      box-shadow: 0 28px 64px rgba(0,0,0,0.4), 0 0 60px rgba(201,168,76,0.2);
-    }
-
-    .pricing-badge {
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--gold);
-      color: var(--black);
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 5px 18px;
-      border-radius: 99px;
-      white-space: nowrap;
-    }
-
-    .pricing-tier {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 16px;
-    }
-
-    .pricing-price {
-      display: flex;
-      align-items: flex-end;
-      gap: 4px;
-      margin-bottom: 8px;
-    }
-    .price-currency {
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--white);
-      padding-bottom: 6px;
-    }
-    .price-amount {
-      font-family: var(--font-head);
-      font-size: 3.5rem;
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1;
-    }
-    .price-period {
-      font-size: 0.85rem;
-      color: var(--grey-mid);
-      padding-bottom: 8px;
-    }
-
-    .pricing-description {
-      font-size: 0.88rem;
-      color: var(--grey-mid);
-      margin-bottom: 32px;
-      line-height: 1.7;
-    }
-
-    .pricing-divider {
-      height: 1px;
-      background: var(--grey-dark);
-      margin-bottom: 32px;
-    }
-
-    .pricing-features {
-      list-style: none;
-      margin-bottom: 36px;
-    }
-    .pricing-features li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 0.88rem;
-      color: var(--grey-light);
-      padding: 8px 0;
-    }
-    .pricing-features li svg {
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .pricing-card .btn { width: 100%; justify-content: center; }
-
-    /* =============================================
-       FAQ
-    ============================================= */
-    #faq {
-      padding: 120px 0;
-      background: var(--black);
-    }
-
-    .faq-layout {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .faq-sticky {
-      position: sticky;
-      top: 120px;
-    }
-
-    .faq-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      border-top: 1px solid var(--grey-dark);
-    }
-
-    .faq-item {
-      border-bottom: 1px solid var(--grey-dark);
-    }
-
-    .faq-question {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 24px 0;
-      cursor: pointer;
-      font-family: var(--font-body);
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--white);
-      background: none;
-      border: none;
-      width: 100%;
-      text-align: left;
-      transition: color var(--transition);
-    }
-    .faq-question:hover { color: var(--gold); }
-
-    .faq-icon {
-      flex-shrink: 0;
-      width: 28px;
-      height: 28px;
-      border: 1px solid var(--grey-dark);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all var(--transition);
-    }
-    .faq-item.open .faq-icon {
-      background: var(--gold);
-      border-color: var(--gold);
-      transform: rotate(45deg);
-    }
-    .faq-item.open .faq-icon svg { color: var(--black); }
-
-    .faq-answer {
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.4s ease, padding 0.3s ease;
-    }
-    .faq-item.open .faq-answer { max-height: 300px; }
-
-    .faq-answer p {
-      padding-bottom: 24px;
-      font-size: 0.95rem;
-      color: var(--grey-mid);
-      line-height: 1.85;
-    }
-
-    /* =============================================
-       CONTACT / CTA
-    ============================================= */
-    #contact {
-      padding: 120px 0;
-      background: var(--charcoal);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .contact-bg-glow {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 600px;
-      height: 400px;
-      background: radial-gradient(ellipse at center, rgba(201,168,76,0.07) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .contact-inner {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    .contact-inner .section-title {
-      font-size: clamp(2rem, 4.5vw, 3.4rem);
-      margin-bottom: 20px;
-    }
-
-    .contact-inner .section-subtitle {
-      margin: 0 auto 48px;
-    }
-
-    .contact-buttons {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    /* =============================================
-       FOOTER
-    ============================================= */
-    #footer {
-      background: var(--black);
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 64px 0 32px;
-    }
-
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 48px;
-      flex-wrap: wrap;
-      gap: 36px;
-    }
-
-    .footer-brand .nav-logo { margin-bottom: 16px; }
-
-    .footer-tagline {
-      font-size: 0.88rem;
-      color: var(--grey-mid);
-      max-width: 260px;
-      line-height: 1.7;
-    }
-
-    .footer-socials {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .social-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 42px;
-      height: 42px;
-      background: var(--charcoal-2);
-      border: 1px solid var(--grey-dark);
-      border-radius: 50%;
-      transition: all var(--transition);
-      color: var(--gold);
-    }
-    .social-link:hover {
-      background: var(--gold-dim);
-      border-color: var(--gold);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(201,168,76,0.2);
-    }
-    .social-link svg { display: block; }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding-top: 28px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .footer-copyright {
-      font-size: 0.78rem;
-      color: var(--grey-mid);
-    }
-
-    /* =============================================
-       RESPONSIVE
-    ============================================= */
-    @media (max-width: 1024px) {
-      .about-grid { grid-template-columns: 1fr; gap: 56px; }
-      .about-visual { display: none; }
-      .faq-layout { grid-template-columns: 1fr; gap: 48px; }
-      .faq-sticky { position: static; }
-    }
-
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .mobile-menu { display: flex; }
-
-      .services-grid,
-      .testimonials-grid,
-      .pricing-grid { grid-template-columns: 1fr; }
-
-      .portfolio-grid { grid-template-columns: 1fr; }
-
-      .hero-title { font-size: clamp(2.2rem, 9vw, 3.2rem); }
-
-      .portfolio-header { flex-direction: column; align-items: flex-start; }
-
-      .footer-top { flex-direction: column; }
-      .footer-socials { flex-wrap: wrap; }
-
-      .about-stats { grid-template-columns: 1fr 1fr; }
-
-      #about,
-      #services,
-      #portfolio,
-      #testimonials,
-      #pricing,
-      #faq,
-      #contact { padding: 80px 0; }
-    }
-
-    @media (max-width: 480px) {
-      .hero-buttons { flex-direction: column; }
-      .hero-buttons .btn { width: 100%; justify-content: center; }
-      .contact-buttons { flex-direction: column; align-items: center; }
-      .about-stats { grid-template-columns: 1fr; }
-    }
-
-@media (min-width: 320px) and (max-width: 360px) {
-      .container { padding: 0 16px; }
-      .hero-title { font-size: 2rem; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Equinox Web Solutions | Websites for South African Small Businesses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0b0a08;
+    --bg-soft: #100e0a;
+    --surface: #151310;
+    --surface2: #1c1914;
+    --border: rgba(255,255,255,0.08);
+    --border-hover: rgba(201,162,60,0.4);
+    --text: #f4f1e9;
+    --text-muted: #9c968a;
+    --text-dim: #5f5a4f;
+    --gold: #c9a227;
+    --gold-bright: #e3c15f;
+    --gold-dim: rgba(201,162,60,0.12);
+    --gold-line: rgba(201,162,60,0.3);
+    --serif: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+    --sans: 'Inter', system-ui, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+    --radius: 10px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+  button { font-family: inherit; }
+
+  :focus-visible {
+    outline: 2px solid var(--gold-bright);
+    outline-offset: 3px;
+  }
+
+  section { padding: 7rem 2.5rem; max-width: 1180px; margin: 0 auto; }
+
+  .divider { width: 100%; height: 1px; background: var(--border); max-width: 1180px; margin: 0 auto; }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--gold);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-label::before {
+    content: '';
+    width: 22px; height: 1px;
+    background: var(--gold-line);
+  }
+
+  .section-head { max-width: 640px; margin-bottom: 3.5rem; }
+  .section-head h2 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 2.9rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .section-head p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-top: 1rem;
+    line-height: 1.75;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1.7rem;
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary { background: var(--gold); color: #16130a; }
+  .btn-primary:hover { background: var(--gold-bright); transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border-hover); }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold-bright); transform: translateY(-2px); }
+  .btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+  /* ── LOGO MARK ── */
+  .logo-mark { width: 34px; height: 34px; overflow: visible; flex-shrink: 0; }
+  .logo-mark .ring-outer, .logo-mark .ring-inner {
+    transform-origin: 50% 50%;
+    animation-play-state: paused;
+  }
+  .logo-mark .ring-outer { animation: spin-cw 7s linear infinite; }
+  .logo-mark .ring-inner { animation: spin-ccw 4.5s linear infinite; }
+  .logo-mark .dot { transition: r 0.3s ease; }
+  .logo-group:hover .logo-mark .ring-outer,
+  .logo-group:hover .logo-mark .ring-inner { animation-play-state: running; }
+  .logo-group:hover .logo-mark .dot { r: 5; }
+  @keyframes spin-cw { to { transform: rotate(360deg); } }
+  @keyframes spin-ccw { to { transform: rotate(-360deg); } }
+
+  .logo-group {
+    display: flex; align-items: center; gap: 0.7rem;
+    text-decoration: none;
+  }
+  .logo-text-name {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+  }
+  .logo-text-sub {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    color: var(--gold);
+    letter-spacing: 0.22em;
+    display: block;
+    margin-top: 0.25rem;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 2.5rem;
+    background: rgba(11,10,8,0.82);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-links { display: flex; align-items: center; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta { display: flex; align-items: center; gap: 1rem; }
+  .nav-toggle {
+    display: none;
+    align-items: center; justify-content: center;
+    width: 38px; height: 38px;
+    background: transparent;
+    border: 1px solid var(--border-hover);
+    border-radius: 4px;
+    color: var(--text);
+    cursor: pointer;
+  }
+  .nav-toggle svg { width: 18px; height: 18px; }
+  .nav-mobile-panel {
+    display: none;
+    position: fixed;
+    top: 65px; left: 0; right: 0;
+    background: rgba(11,10,8,0.97);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    z-index: 199;
+    flex-direction: column;
+    padding: 1rem 1.25rem 1.5rem;
+    gap: 0.25rem;
+  }
+  .nav-mobile-panel.open { display: flex; }
+  .nav-mobile-panel a {
+    padding: 0.85rem 0.5rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-mobile-panel a:hover { color: var(--gold-bright); }
+  .nav-mobile-panel .btn { margin-top: 1rem; justify-content: center; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 2.5rem 5rem;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero-bends {
+    position: absolute; inset: 0;
+    z-index: 0;
+    width: 100%; height: 100%;
+    background:
+      radial-gradient(ellipse 60% 50% at 30% 20%, rgba(201,162,60,0.16), transparent 60%),
+      radial-gradient(ellipse 55% 45% at 75% 70%, rgba(201,162,60,0.1), transparent 65%),
+      var(--bg);
+  }
+  .hero-bends canvas { display: block; width: 100% !important; height: 100% !important; }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(11,10,8,0.2) 0%, rgba(11,10,8,0.4) 55%, var(--bg) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 720px; pointer-events: auto; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--gold-bright);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 1.75rem;
+    opacity: 0; animation: fadeUp 0.6s 0.2s ease forwards;
+  }
+  .hero-tag::before { content: ''; width: 26px; height: 1px; background: var(--gold-line); }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp 0.7s 0.35s ease forwards;
+  }
+  .hero h1 em { font-style: normal; color: var(--gold-bright); }
+  .hero-desc {
+    font-size: 1.08rem;
+    color: var(--text-muted);
+    max-width: 520px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    opacity: 0; animation: fadeUp 0.7s 0.5s ease forwards;
+  }
+  .hero-actions {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.7s 0.65s ease forwards;
+  }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── SERVICES ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2.1rem 1.8rem;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+  .service-card:hover { border-color: var(--border-hover); transform: translateY(-3px); }
+  .service-icon {
+    width: 46px; height: 46px;
+    border-radius: 8px;
+    background: var(--gold-dim);
+    border: 1px solid var(--gold-line);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.4rem;
+  }
+  .service-icon svg { width: 22px; height: 22px; stroke: var(--gold-bright); }
+  .service-card h3 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+  }
+  .service-card p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.75; }
+
+  /* ── WORK TABS ── */
+  .work-wrap { display: grid; grid-template-columns: 220px 1fr; gap: 2.5rem; align-items: start; }
+  .work-tabs { display: flex; flex-direction: column; gap: 0.4rem; position: sticky; top: 100px; }
+  .work-tab {
+    text-align: left;
+    background: transparent;
+    border: 1px solid transparent;
+    border-left: 2px solid var(--border);
+    padding: 0.85rem 1rem;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 0 6px 6px 0;
+  }
+  .work-tab .work-tab-cat {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--text-dim);
+    margin-top: 0.2rem;
+  }
+  .work-tab:hover { color: var(--text-muted); }
+  .work-tab.active {
+    color: var(--gold-bright);
+    border-left-color: var(--gold);
+    background: var(--gold-dim);
+  }
+  .work-tab.active .work-tab-cat { color: var(--gold); }
+
+  .work-panel { display: none; }
+  .work-panel.active { display: block; animation: fadeUp 0.5s ease; }
+  .work-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .work-thumb {
+    height: 260px;
+    position: relative;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 28px 28px;
+    background-color: var(--surface2);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .work-thumb::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, transparent 30%, var(--surface2) 90%);
+  }
+  .work-thumb svg { width: 56px; height: 56px; stroke: var(--gold-line); position: relative; z-index: 1; }
+  .work-body { padding: 2rem; }
+  .work-cat {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    background: var(--gold-dim);
+    border: 1px solid var(--gold-line);
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+  }
+  .work-body h3 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-bottom: 0.75rem;
+  }
+  .work-body p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    max-width: 560px;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── LOGO LOOP (tools) ── */
+  .tools-section { padding-top: 4rem; padding-bottom: 4rem; }
+  .tools-label {
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .logoloop {
+    position: relative;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  }
+  .logoloop-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: loop-scroll 32s linear infinite;
+  }
+  .logoloop-list { display: flex; align-items: center; }
+  .logoloop-item {
+    flex: 0 0 auto;
+    margin-right: 3.5rem;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0.85;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .logoloop-item:hover { opacity: 1; transform: scale(1.12); }
+  .logoloop-item img { height: 32px; width: auto; }
+  @keyframes loop-scroll { to { transform: translate3d(-50%, 0, 0); } }
+
+  /* ── PRICING ── */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem;
+  }
+  .price-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    display: flex; flex-direction: column;
+  }
+  .price-card.featured {
+    border-color: var(--gold-line);
+    background: linear-gradient(180deg, var(--gold-dim) 0%, var(--surface) 26%);
+    position: relative;
+  }
+  .price-card.featured::before {
+    content: 'Full service';
+    position: absolute; top: -1px; right: 2rem;
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em;
+    color: #16130a; background: var(--gold-bright);
+    padding: 0.3rem 0.8rem; border-radius: 0 0 6px 6px;
+  }
+  .price-plan-name {
+    font-family: var(--mono); font-size: 0.75rem;
+    color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .price-amount {
+    font-family: var(--serif); font-weight: 700;
+    font-size: 2.6rem; line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .price-amount span {
+    font-family: var(--sans); font-weight: 500;
+    font-size: 0.95rem; color: var(--text-muted);
+  }
+  .price-sub { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 2rem; }
+  .price-features {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 0.9rem;
+    margin-bottom: 2rem;
+    flex: 1;
+  }
+  .price-features li {
+    display: flex; align-items: flex-start; gap: 0.7rem;
+    font-size: 0.9rem; color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .price-features li svg {
+    width: 16px; height: 16px; flex-shrink: 0;
+    stroke: var(--gold-bright); margin-top: 0.2rem;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .testimonial-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    display: flex; flex-direction: column;
+  }
+  .testimonial-quote-mark {
+    font-family: var(--serif);
+    font-weight: 800;
+    font-size: 2.6rem;
+    color: var(--gold-line);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .testimonial-card p.quote {
+    color: var(--text-muted);
+    font-size: 0.94rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    flex: 1;
+  }
+  .testimonial-person { display: flex; align-items: center; gap: 0.8rem; }
+  .testimonial-avatar {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--gold-dim);
+    border: 1px solid var(--gold-line);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-weight: 700; font-size: 1rem; color: var(--gold-bright);
+  }
+  .testimonial-name { font-size: 0.88rem; font-weight: 600; }
+  .testimonial-biz { font-size: 0.78rem; color: var(--text-dim); }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .cta-inner {
+    max-width: 720px; margin: 0 auto; padding: 6rem 2.5rem;
+    text-align: center;
+  }
+  .cta-inner h2 {
+    font-family: var(--serif); font-weight: 700;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.15;
+    margin-bottom: 1.1rem;
+  }
+  .cta-inner p {
+    color: var(--text-muted); font-size: 0.97rem; line-height: 1.8;
+    margin: 0 auto 2.25rem;
+    max-width: 520px;
+  }
+  .cta-actions {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 3.5rem 2.5rem 2.5rem;
+    max-width: 1180px; margin: 0 auto;
+  }
+  .footer-top {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    flex-wrap: wrap; gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  .footer-about p {
+    color: var(--text-muted); font-size: 0.88rem; line-height: 1.8;
+    max-width: 320px; margin-top: 1rem;
+  }
+  .social-links { display: flex; gap: 0.8rem; }
+  .social-links a {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s ease;
+  }
+  .social-links a:hover { border-color: var(--gold-line); background: var(--gold-dim); }
+  .social-links svg { width: 16px; height: 16px; color: var(--gold); transition: color 0.2s ease; }
+  .social-links a:hover svg { color: var(--gold-bright); }
+  .footer-bottom {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .footer-bottom p {
+    font-family: var(--mono); font-size: 0.72rem;
+    color: var(--text-dim); letter-spacing: 0.04em;
+  }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a {
+    font-family: var(--mono); font-size: 0.72rem;
+    color: var(--text-dim); text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold-bright); }
+
+  /* ── REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logoloop-track { animation: none; }
+    .logo-mark .ring-outer, .logo-mark .ring-inner { animation: none; }
+    .reveal { transition: none; opacity: 1; transform: none; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .work-wrap { grid-template-columns: 1fr; }
+    .work-tabs { position: static; flex-direction: row; overflow-x: auto; padding-bottom: 0.5rem; }
+    .work-tab { flex: 0 0 auto; border-left: none; border-bottom: 2px solid var(--border); border-radius: 6px 6px 0 0; }
+    .work-tab.active { border-left-color: transparent; border-bottom-color: var(--gold); }
+  }
+  @media (max-width: 720px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    .nav-cta .btn-outline { display: none; }
+    .nav-toggle { display: flex; }
+    section { padding: 4.5rem 1.25rem; }
+    .hero { padding: 7rem 1.25rem 4rem; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- =============================================
-       NAVIGATION
-  ============================================= -->
-  <header id="nav" role="banner">
-    <div class="container nav-inner">
-
-      <!-- Logo -->
-      <a href="#hero" class="nav-logo" aria-label="Equinox Web Solutions Home">
-        <div class="nav-logo-mark">
-          <!-- Equinox logomark: sun/horizon geometry -->
-          <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- Outer ring -->
-            <circle cx="21" cy="21" r="19.5" stroke="#C9A84C" stroke-width="1.2" opacity="0.5"/>
-            <!-- Horizon line -->
-            <line x1="4" y1="21" x2="38" y2="21" stroke="#C9A84C" stroke-width="1.4"/>
-            <!-- Sun disc -->
-            <circle cx="21" cy="21" r="6.5" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
-            <circle cx="21" cy="21" r="2.5" fill="#C9A84C"/>
-            <!-- Upper arc (day) -->
-            <path d="M10 21 A11 11 0 0 1 32 21" fill="none" stroke="#ffffff" stroke-width="1.2" opacity="0.7"/>
-            <!-- Lower arc (night) -->
-            <path d="M10 21 A11 11 0 0 0 32 21" fill="none" stroke="#C9A84C" stroke-width="1.2" opacity="0.5"/>
-          </svg>
-        </div>
-        <div class="nav-logo-text">
-          <span class="wordmark-top">Equinox</span>
-          <span class="wordmark-bottom">Web Solutions</span>
-        </div>
-      </a>
-
-      <!-- Desktop nav links -->
-      <nav aria-label="Primary navigation">
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Work</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#contact" class="btn btn-primary nav-cta">Get Started</a></li>
-        </ul>
-      </nav>
-
-      <!-- Hamburger -->
-      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle mobile menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="logo-group">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle class="ring-outer" cx="20" cy="20" r="17" stroke="var(--gold)" stroke-width="1.2"/>
+        <circle class="ring-inner" cx="20" cy="20" r="11" stroke="var(--gold)" stroke-width="1.2"/>
+        <circle class="dot" cx="20" cy="20" r="3.2" fill="var(--gold)"/>
+      </svg>
+      <span>
+        <span class="logo-text-name">Equinox</span>
+        <span class="logo-text-sub">WEB SOLUTIONS</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="https://wa.me/27696574085" target="_blank" rel="noopener" class="btn btn-outline">Contact us</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMobilePanel">
+        <svg id="navToggleIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
     </div>
+  </nav>
 
-    <!-- Mobile menu -->
-    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-      <a href="#about" class="mobile-nav-link">About</a>
-      <a href="#services" class="mobile-nav-link">Services</a>
-      <a href="#portfolio" class="mobile-nav-link">Work</a>
-      <a href="#pricing" class="mobile-nav-link">Pricing</a>
-      <a href="#faq" class="mobile-nav-link">FAQ</a>
-      <a href="#contact" class="mobile-nav-link">Get Started</a>
-    </div>
-  </header>
+  <div class="nav-mobile-panel" id="navMobilePanel">
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="https://wa.me/27696574085" target="_blank" rel="noopener" class="btn btn-primary">Contact us on WhatsApp</a>
+  </div>
 
-  <!-- =============================================
-       HERO
-  ============================================= -->
-  <section id="hero" aria-label="Hero">
-
-    <!-- Animated background shapes -->
-    <div class="hero-shapes" aria-hidden="true">
-      <!-- Large morphing blob top-right -->
-      <div class="shape shape-1">
-        <svg viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="260" cy="260" r="200" fill="none" stroke="#C9A84C" stroke-width="0.8"/>
-          <circle cx="260" cy="260" r="160" fill="none" stroke="#C9A84C" stroke-width="0.5"/>
-          <line x1="60" y1="260" x2="460" y2="260" stroke="#C9A84C" stroke-width="0.6"/>
-          <circle cx="260" cy="260" r="50" fill="none" stroke="#ffffff" stroke-width="0.8"/>
-          <circle cx="260" cy="260" r="20" fill="#C9A84C" opacity="0.4"/>
-        </svg>
-      </div>
-
-      <!-- Blob bottom-left -->
-      <div class="shape shape-2">
-        <svg viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="180,20 340,290 20,290" fill="none" stroke="#C9A84C" stroke-width="1"/>
-          <polygon points="180,80 280,250 80,250" fill="none" stroke="#C9A84C" stroke-width="0.6"/>
-        </svg>
-      </div>
-
-      <!-- Small diamond mid -->
-      <div class="shape shape-3">
-        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="70" y="70" width="60" height="60" fill="none" stroke="#C9A84C" stroke-width="1" transform="rotate(45 100 100)"/>
-          <rect x="80" y="80" width="40" height="40" fill="none" stroke="#C9A84C" stroke-width="0.5" transform="rotate(45 100 100)"/>
-        </svg>
-      </div>
-
-      <!-- Small circle upper-right area -->
-      <div class="shape shape-4">
-        <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="70" cy="70" r="55" fill="none" stroke="#ffffff" stroke-width="0.8"/>
-          <circle cx="70" cy="70" r="30" fill="none" stroke="#C9A84C" stroke-width="0.8"/>
-          <circle cx="70" cy="70" r="8" fill="#C9A84C" opacity="0.6"/>
-        </svg>
-      </div>
-
-      <!-- Small orbit lower-right -->
-      <div class="shape shape-5">
-        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="10" y="10" width="60" height="60" fill="none" stroke="#C9A84C" stroke-width="1.2"/>
-          <rect x="25" y="25" width="30" height="30" fill="none" stroke="#ffffff" stroke-width="0.8"/>
-        </svg>
-      </div>
-
-      <div class="hero-horizon"></div>
-    </div>
-
-    <div class="container hero-content">
-      <div class="hero-eyebrow reveal">
-        <div class="hero-eyebrow-line"></div>
-        <span>Professional Web Design</span>
-      </div>
-
-      <h1 class="hero-title reveal reveal-delay-1">
-        Websites that work as<br /><em>hard as you do.</em>
-      </h1>
-
-      <p class="hero-subtitle reveal reveal-delay-2">
-        We design and build professional, mobile-friendly websites for small businesses across the United States. No upfront cost, no complexity, no guesswork.
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bends" id="heroBends"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Websites for South African Businesses</div>
+      <h1>Growing your reputation<br>to <em>grow your reach.</em></h1>
+      <p class="hero-desc">
+        Equinox Web Solutions designs, builds and maintains professional websites for
+        businesses across South Africa, at no upfront cost. You only pay a simple monthly fee
+        once you're happy with the result.
       </p>
-
-      <div class="hero-buttons reveal reveal-delay-3">
-        <a href="#portfolio" class="btn btn-primary">See Our Work</a>
-        <a href="#contact" class="btn btn-outline">Get a Free Website</a>
+      <div class="hero-actions">
+        <a href="#cta" class="btn btn-primary">
+          Book a free call
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="https://wa.me/27696574085" target="_blank" rel="noopener" class="btn btn-outline">
+          Chat on WhatsApp
+        </a>
       </div>
-    </div>
-
-    <!-- Scroll hint -->
-    <div class="hero-scroll-hint" aria-hidden="true">
-      <svg width="16" height="24" viewBox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="1" y="1" width="14" height="22" rx="7" stroke="#8a8a8a" stroke-width="1.2"/>
-        <circle cx="8" cy="8" r="2.5" fill="#C9A84C">
-          <animate attributeName="cy" values="8;14;8" dur="2s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
-        </circle>
-      </svg>
-      <span>Scroll</span>
     </div>
   </section>
 
-  <!-- =============================================
-       ABOUT
-  ============================================= -->
-  <section id="about" aria-label="About Equinox Web Solutions">
-    <div class="container">
-      <div class="about-grid">
+  <div class="divider"></div>
 
-        <!-- Visual side -->
-        <div class="about-visual reveal">
-          <svg class="about-svg-frame" viewBox="0 0 440 440" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- Background squares -->
-            <rect width="440" height="440" rx="16" fill="#1c1c1c"/>
-            <!-- Grid pattern -->
-            <g opacity="0.06" stroke="#C9A84C" stroke-width="0.8">
-              <line x1="0" y1="110" x2="440" y2="110"/>
-              <line x1="0" y1="220" x2="440" y2="220"/>
-              <line x1="0" y1="330" x2="440" y2="330"/>
-              <line x1="110" y1="0" x2="110" y2="440"/>
-              <line x1="220" y1="0" x2="220" y2="440"/>
-              <line x1="330" y1="0" x2="330" y2="440"/>
-            </g>
-            <!-- Central equinox symbol large -->
-            <circle cx="220" cy="220" r="120" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.2"/>
-            <circle cx="220" cy="220" r="80" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.35"/>
-            <line x1="80" y1="220" x2="360" y2="220" stroke="#C9A84C" stroke-width="1.5" opacity="0.5"/>
-            <circle cx="220" cy="220" r="28" fill="none" stroke="#C9A84C" stroke-width="2" opacity="0.6"/>
-            <circle cx="220" cy="220" r="8" fill="#C9A84C" opacity="0.8"/>
-            <!-- Upper arc -->
-            <path d="M140 220 A80 80 0 0 1 300 220" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
-            <!-- Lower arc -->
-            <path d="M140 220 A80 80 0 0 0 300 220" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.4"/>
-            <!-- Corner accents -->
-            <rect x="16" y="16" width="32" height="32" rx="4" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.3"/>
-            <rect x="392" y="16" width="32" height="32" rx="4" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.3"/>
-            <rect x="16" y="392" width="32" height="32" rx="4" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.3"/>
-            <rect x="392" y="392" width="32" height="32" rx="4" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.3"/>
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-head reveal">
+      <div class="section-label">What we do</div>
+      <h2>Everything your website needs, handled.</h2>
+      <p>From the first line of code to the ongoing upkeep, we take care of the parts of your online presence you don't have time for.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal" style="transition-delay:0.05s">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>Free Website Build</h3>
+        <p>We design and build your entire website at no upfront cost. You review it, request changes, and only commit once you are completely happy with what we have created together.</p>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.1s">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 3 6v6c0 5 3.8 8.7 9 10 5.2-1.3 9-5 9-10V6l-9-4z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <h3>Monthly Maintenance</h3>
+        <p>Your site stays live, secure and up to date. We handle hosting, software updates, content changes and technical support, so you never have to think about it.</p>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.15s">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="M11 8v3l2 1"/></svg>
+        </div>
+        <h3>SEO and Google Presence</h3>
+        <p>We optimise your site so local customers can actually find you on Google. From technical SEO to Google Business Profile setup, we make sure you show up where it matters.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- TOOLS LOGO LOOP -->
+  <section class="tools-section">
+    <div class="tools-label reveal">Built with the tools trusted by modern web teams</div>
+    <div class="logoloop reveal">
+      <div class="logoloop-track" id="logoLoopTrack">
+        <!-- populated by JS (two copies for seamless loop) -->
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="section-head reveal">
+      <div class="section-label">Recent work</div>
+      <h2>Businesses we've helped get online.</h2>
+      <p>A look at a few of the South African businesses we've built and maintain websites for.</p>
+    </div>
+
+    <div class="work-wrap">
+      <div class="work-tabs reveal" role="tablist" aria-label="Recent work">
+        <button class="work-tab active" data-tab="1" role="tab" aria-selected="true">
+          Shine The Way Daycare
+          <span class="work-tab-cat">CHILDCARE</span>
+        </button>
+        <button class="work-tab" data-tab="2" role="tab" aria-selected="false">
+          JR's Cleaning Services
+          <span class="work-tab-cat">CLEANING</span>
+        </button>
+        <button class="work-tab" data-tab="3" role="tab" aria-selected="false">
+          Live FM
+          <span class="work-tab-cat">MEDIA</span>
+        </button>
+        <button class="work-tab" data-tab="4" role="tab" aria-selected="false">
+          ABT Consulting
+          <span class="work-tab-cat">CONSULTING</span>
+        </button>
+      </div>
+
+      <div class="work-panels reveal" style="transition-delay:0.1s">
+        <div class="work-panel active" data-panel="1">
+          <div class="work-card">
+            <div class="work-thumb">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3 3 9l9 5 9-5-9-6Z"/><path d="M3 9v6l9 5 9-5V9"/></svg>
+            </div>
+            <div class="work-body">
+              <span class="work-cat">CHILDCARE</span>
+              <h3>Shine The Way Daycare</h3>
+              <p>A warm, welcoming site for a growing daycare. Includes an online enquiry form, program overview and a gallery that gives parents a real feel for the space before they visit.</p>
+              <a href="#" class="btn btn-outline">View Project</a>
+            </div>
+          </div>
+        </div>
+        <div class="work-panel" data-panel="2">
+          <div class="work-card">
+            <div class="work-thumb">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3v4M10 3v4M3 7h14l-1 4H4L3 7Z"/><path d="M5 11v7a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-7"/></svg>
+            </div>
+            <div class="work-body">
+              <span class="work-cat">CLEANING</span>
+              <h3>JR's Cleaning Services</h3>
+              <p>A trust-first service site with a clear call to action, service area coverage and an online quote request form built to turn visitors into booked jobs.</p>
+              <a href="#" class="btn btn-outline">View Project</a>
+            </div>
+          </div>
+        </div>
+        <div class="work-panel" data-panel="3">
+          <div class="work-card">
+            <div class="work-thumb">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7M5.5 5.5a9 9 0 0 0 0 13M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+            </div>
+            <div class="work-body">
+              <span class="work-cat">MEDIA</span>
+              <h3>Live FM</h3>
+              <p>A radio station site with a live stream player, show schedule and presenter profiles, built to keep listeners engaged between broadcasts.</p>
+              <a href="#" class="btn btn-outline">View Project</a>
+            </div>
+          </div>
+        </div>
+        <div class="work-panel" data-panel="4">
+          <div class="work-card">
+            <div class="work-thumb">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            </div>
+            <div class="work-body">
+              <span class="work-cat">CONSULTING</span>
+              <h3>ABT Consulting</h3>
+              <p>A polished consulting site that leads with results. Clear service breakdowns and a lead capture form designed to convert enquiries into clients.</p>
+              <a href="#" class="btn btn-outline">View Project</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="section-head reveal">
+      <div class="section-label">Pricing</div>
+      <h2>Simple, month to month pricing.</h2>
+      <p>One flat monthly fee covers your website and everything needed to keep it running.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <div class="price-plan-name">Growth</div>
+        <div class="price-amount">R4 900<span>/month</span></div>
+        <div class="price-sub">Everything a business site needs to run itself.</div>
+        <ul class="price-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Professional website hosting</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>SSL certificate included</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Email support</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Mobile-optimised website</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Unlimited content updates</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Local SEO basics included</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Google Business Profile setup</li>
+        </ul>
+        <a href="#cta" class="btn btn-outline">Book a free call</a>
+      </div>
+
+      <div class="price-card featured reveal" style="transition-delay:0.1s">
+        <div class="price-plan-name">Accelerate</div>
+        <div class="price-amount">R16 400<span>/month</span></div>
+        <div class="price-sub">For businesses ready to actively grow their leads.</div>
+        <ul class="price-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Everything in Growth</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Google Ads campaign setup</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Monthly performance report</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Dedicated account manager</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Fastest priority support</li>
+        </ul>
+        <a href="#cta" class="btn btn-primary">Book a free call</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="section-head reveal">
+      <div class="section-label">Testimonials</div>
+      <h2>What our clients say.</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote-mark">&ldquo;</div>
+        <p class="quote">Equinox built our entire site at no cost to us and kept refining it until we were completely happy. Parents can now find us on Google and book a tour in minutes.</p>
+        <div class="testimonial-person">
+          <div class="testimonial-avatar">M</div>
+          <div>
+            <div class="testimonial-name">Melanie</div>
+            <div class="testimonial-biz">Shine The Way Daycare</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal" style="transition-delay:0.05s">
+        <div class="testimonial-quote-mark">&ldquo;</div>
+        <p class="quote">Professional from the first call to the finished site. Our new website looks credible and brings in enquiries every week.</p>
+        <div class="testimonial-person">
+          <div class="testimonial-avatar">I</div>
+          <div>
+            <div class="testimonial-name">Ishmoedeenah</div>
+            <div class="testimonial-biz">ABT Consulting</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal" style="transition-delay:0.1s">
+        <div class="testimonial-quote-mark">&ldquo;</div>
+        <p class="quote">They understood exactly what a radio station website needed. Our listeners can find the schedule and stream us with no hassle at all.</p>
+        <div class="testimonial-person">
+          <div class="testimonial-avatar">C</div>
+          <div>
+            <div class="testimonial-name">Cyster</div>
+            <div class="testimonial-biz">Live FM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="cta">
+    <div class="cta-inner reveal">
+      <div class="section-label" style="justify-content:center">Let's talk</div>
+      <h2>Ready for a website that works for you?</h2>
+      <p>Book a free, no-obligation call and we'll walk you through what a new site could look like for your business, or message us directly on WhatsApp.</p>
+      <div class="cta-actions">
+        <!-- Replace the url below with your real Calendly scheduling link -->
+        <a href="#" class="btn btn-primary" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/equinoxwebsolutions/free-consultation'}); return false;">
+          Book a free call
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="https://wa.me/27696574085" target="_blank" rel="noopener" class="btn btn-outline">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.9C21.96 6.45 17.5 2 12.04 2Zm0 18.08a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.11.82.83-3.03-.2-.31a8.2 8.2 0 0 1-1.26-4.33c0-4.53 3.69-8.22 8.23-8.22 4.53 0 8.22 3.69 8.22 8.22 0 4.54-3.69 8.22-8.23 8.22Zm4.5-6.16c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.16 0-.43.06-.66.31-.22.24-.87.85-.87 2.08 0 1.22.89 2.4 1.02 2.57.12.16 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.66-1.17.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.28Z"/></svg>
+          Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-about">
+        <a href="#hero" class="logo-group">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle class="ring-outer" cx="20" cy="20" r="17" stroke="var(--gold)" stroke-width="1.2"/>
+            <circle class="ring-inner" cx="20" cy="20" r="11" stroke="var(--gold)" stroke-width="1.2"/>
+            <circle class="dot" cx="20" cy="20" r="3.2" fill="var(--gold)"/>
           </svg>
-
-          <!-- Stats below the visual -->
-          <div class="about-stats">
-            <div class="stat-card reveal reveal-delay-1">
-              <span class="stat-number">100+</span>
-              <span class="stat-label">Websites Delivered</span>
-            </div>
-            <div class="stat-card reveal reveal-delay-2">
-              <span class="stat-number">$0</span>
-              <span class="stat-label">Upfront Cost to You</span>
-            </div>
-            <div class="stat-card reveal reveal-delay-3">
-              <span class="stat-number">48h</span>
-              <span class="stat-label">Average Build Time</span>
-            </div>
-            <div class="stat-card reveal reveal-delay-4">
-              <span class="stat-number">98%</span>
-              <span class="stat-label">Client Retention Rate</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Text side -->
-        <div class="about-text">
-          <span class="section-label reveal">Who We Are</span>
-          <h2 class="section-title reveal reveal-delay-1">Built for the businesses that keep communities running.</h2>
-
-          <div class="reveal reveal-delay-2">
-            <p>
-              Equinox Web Solutions is a modern web design agency helping small businesses across the United States establish a professional online presence without the complexity or upfront cost that usually comes with it.
-            </p>
-            <p>
-              We specialise in clean, fast, mobile-friendly websites for local service businesses. Plumbers, salons, restaurants, contractors, and everything in between. If your customers need to find you online, we make sure they can.
-            </p>
-            <p>
-              Our model is simple: we build your website for free so you can see exactly what you get before committing to anything. Ongoing hosting, maintenance, and updates are then handled through an affordable monthly plan that fits comfortably into any business budget.
-            </p>
-            <p>
-              No technical knowledge required. No hidden fees. No surprises.
-            </p>
-          </div>
-
-          <div style="margin-top: 40px;" class="reveal reveal-delay-3">
-            <a href="#contact" class="btn btn-primary">Start for Free</a>
-          </div>
-        </div>
-
+          <span>
+            <span class="logo-text-name">Equinox</span>
+            <span class="logo-text-sub">WEB SOLUTIONS</span>
+          </span>
+        </a>
+        <p>Professional websites for businesses across South Africa. Built free, maintained affordably.</p>
+      </div>
+      <div class="social-links">
+        <a href="https://wa.me/27696574085" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.9C21.96 6.45 17.5 2 12.04 2Zm0 18.08a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.11.82.83-3.03-.2-.31a8.2 8.2 0 0 1-1.26-4.33c0-4.53 3.69-8.22 8.23-8.22 4.53 0 8.22 3.69 8.22 8.22 0 4.54-3.69 8.22-8.23 8.22Zm4.5-6.16c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.16 0-.43.06-.66.31-.22.24-.87.85-.87 2.08 0 1.22.89 2.4 1.02 2.57.12.16 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.66-1.17.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.28Z"/></svg>
+        </a>
+        <a href="#" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" target="_blank" rel="noopener" aria-label="X">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
+        </a>
+        <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14.5 8.5h2V5.3c-.35-.05-1.54-.15-2.94-.15-2.9 0-4.9 1.77-4.9 5.02v2.63H6v3.6h3.16V22h3.7v-5.6h3.03l.48-3.6h-3.51v-2.3c0-1.04.28-1.75 1.64-1.75Z"/></svg>
+        </a>
+        <a href="#" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2.3" y="6" width="19.4" height="12" rx="4"/><path d="M10.2 9.6v4.8l4.6-2.4-4.6-2.4Z" fill="currentColor" stroke="none"/></svg>
+        </a>
       </div>
     </div>
-  </section>
-
-  <!-- =============================================
-       SERVICES
-  ============================================= -->
-  <section id="services" aria-label="Our Services">
-    <div class="container">
-      <div class="services-header">
-        <span class="section-label reveal">What We Offer</span>
-        <h2 class="section-title reveal reveal-delay-1">Everything you need, nothing you don't.</h2>
-        <p class="section-subtitle reveal reveal-delay-2">Three focused services designed to get your business online, keep it there, and help customers find it.</p>
-      </div>
-
-      <div class="services-grid">
-
-        <!-- Service 1: Free Website Build -->
-        <div class="service-card reveal">
-          <div class="service-icon">
-            <!-- Monitor/screen icon -->
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="2" y="4" width="24" height="16" rx="2" stroke="#C9A84C" stroke-width="1.5"/>
-              <line x1="9" y1="24" x2="19" y2="24" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
-              <line x1="14" y1="20" x2="14" y2="24" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M8 13l3-3 3 3 3-5" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="service-gold-line"></div>
-          <h3>Free Website Build</h3>
-          <p>We design and build your entire website at no upfront cost. You review it, request changes, and only commit once you are completely happy with what we have created together.</p>
-        </div>
-
-        <!-- Service 2: Monthly Maintenance -->
-        <div class="service-card reveal reveal-delay-1">
-          <div class="service-icon">
-            <!-- Shield/maintenance icon -->
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M14 3L5 7v7c0 5 4 9.5 9 11 5-1.5 9-6 9-11V7L14 3z" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M10 14l2.5 2.5L18 11" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="service-gold-line"></div>
-          <h3>Monthly Maintenance</h3>
-          <p>Your site stays live, secure, and up to date. We handle hosting, software updates, content changes, and technical support so you never have to think about it.</p>
-        </div>
-
-        <!-- Service 3: SEO -->
-        <div class="service-card reveal reveal-delay-2">
-          <div class="service-icon">
-            <!-- Search/magnify icon -->
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="12" cy="12" r="8" stroke="#C9A84C" stroke-width="1.5"/>
-              <line x1="18" y1="18" x2="25" y2="25" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
-              <line x1="9" y1="12" x2="15" y2="12" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round"/>
-              <line x1="12" y1="9" x2="12" y2="15" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="service-gold-line"></div>
-          <h3>SEO and Google Presence</h3>
-          <p>We optimise your site so local customers can actually find you on Google. From technical SEO to Google Business Profile setup, we make sure you show up where it matters.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- =============================================
-       PORTFOLIO
-  ============================================= -->
-  <section id="portfolio" aria-label="Our Work">
-    <div class="container">
-      <div class="portfolio-header">
-        <div>
-          <span class="section-label reveal">Our Work</span>
-          <h2 class="section-title reveal reveal-delay-1">Real sites, real businesses.</h2>
-        </div>
-        <p class="section-subtitle reveal reveal-delay-2" style="max-width: 340px; text-align: right;">A selection of websites we have designed and built for local businesses.</p>
-      </div>
-
-      <div class="portfolio-grid">
-
-        <!-- Project 1 -->
-        <div class="project-card reveal">
-          <div class="project-image">
-            <div class="project-image-inner">
-              <div class="project-placeholder-icon">
-                <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <rect x="8" y="14" width="40" height="30" rx="3" stroke="#C9A84C" stroke-width="1.5"/>
-                  <line x1="8" y1="22" x2="48" y2="22" stroke="#C9A84C" stroke-width="1.2"/>
-                  <circle cx="14" cy="18" r="1.5" fill="#C9A84C"/>
-                  <circle cx="20" cy="18" r="1.5" fill="#C9A84C"/>
-                  <line x1="16" y1="30" x2="40" y2="30" stroke="#C9A84C" stroke-width="1"/>
-                  <line x1="16" y1="36" x2="32" y2="36" stroke="#C9A84C" stroke-width="1"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <span class="project-tag">Restaurant</span>
-            <h3>Casa Verde Kitchen</h3>
-            <p>A modern dining website with online menu, reservation request form, and a gallery. Built to drive foot traffic from local Google searches.</p>
-            <a href="#contact" class="btn btn-outline btn-sm">View Project</a>
-          </div>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="project-card reveal reveal-delay-1">
-          <div class="project-image">
-            <div class="project-image-inner">
-              <div class="project-placeholder-icon">
-                <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M20 44V30a8 8 0 0 1 16 0v14" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
-                  <rect x="10" y="20" width="36" height="6" rx="2" stroke="#C9A84C" stroke-width="1.5"/>
-                  <path d="M28 12v8" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
-                  <line x1="10" y1="44" x2="46" y2="44" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <span class="project-tag">Plumbing</span>
-            <h3>Apex Plumbing Services</h3>
-            <p>A trust-focused service site with clear call to action, service area map, and a contact form optimised for lead generation. Ranks on page one locally.</p>
-            <a href="#contact" class="btn btn-outline btn-sm">View Project</a>
-          </div>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="project-card reveal reveal-delay-2">
-          <div class="project-image">
-            <div class="project-image-inner">
-              <div class="project-placeholder-icon">
-                <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <circle cx="28" cy="22" r="10" stroke="#C9A84C" stroke-width="1.5"/>
-                  <path d="M14 44c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
-                  <path d="M36 18c2 1.5 4 4 4 6" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
-                  <path d="M20 18c-2 1.5-4 4-4 6" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <span class="project-tag">Salon</span>
-            <h3>Lumiere Beauty Studio</h3>
-            <p>An elegant booking-oriented website for a boutique hair salon. Features service menu, stylist profiles, and a direct booking integration.</p>
-            <a href="#contact" class="btn btn-outline btn-sm">View Project</a>
-          </div>
-        </div>
-
-        <!-- Project 4 -->
-        <div class="project-card reveal reveal-delay-3">
-          <div class="project-image">
-            <div class="project-image-inner">
-              <div class="project-placeholder-icon">
-                <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <rect x="8" y="28" width="20" height="18" rx="2" stroke="#C9A84C" stroke-width="1.5"/>
-                  <path d="M28 36h12l6-12H28v12z" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round"/>
-                  <circle cx="16" cy="48" r="3" stroke="#C9A84C" stroke-width="1.2"/>
-                  <circle cx="40" cy="48" r="3" stroke="#C9A84C" stroke-width="1.2"/>
-                  <path d="M12 28V18l8-8h12v18" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <span class="project-tag">Auto Repair</span>
-            <h3>Summit Auto Workshop</h3>
-            <p>A credibility-first site for an independent auto mechanic. Highlights certifications, customer reviews, and a clear quote request form.</p>
-            <a href="#contact" class="btn btn-outline btn-sm">View Project</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- =============================================
-       TESTIMONIALS
-  ============================================= -->
-  <section id="testimonials" aria-label="Client Testimonials">
-    <div class="container">
-      <div class="testimonials-header">
-        <span class="section-label reveal">Client Stories</span>
-        <h2 class="section-title reveal reveal-delay-1">What our clients say.</h2>
-        <p class="section-subtitle reveal reveal-delay-2">We let our clients do the talking. These are real experiences from real businesses we have worked with.</p>
-      </div>
-
-      <div class="testimonials-grid">
-
-        <!-- Testimonial 1 -->
-        <div class="testimonial-card reveal">
-          <div class="testimonial-stars" aria-label="5 stars">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="#C9A84C" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="7,1 8.8,5 13,5.4 9.9,8.2 10.9,12.5 7,10.2 3.1,12.5 4.1,8.2 1,5.4 5.2,5"/></svg>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="#C9A84C" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="7,1 8.8,5 13,5.4 9.9,8.2 10.9,12.5 7,10.2 3.1,12.5 4.1,8.2 1,5.4 5.2,5"/></svg>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="#C9A84C" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="7,1 8.8,5 13,5.4 9.9,8.2 10.9,12.5 7,10.2 3.1,12.5 4.1,8.2 1,5.4 5.2,5"/></svg>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="#C9A84C" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="7,1 8.8,5 13,5.4 9.9,8.2 10.9,12.5 7,10.2 3.1,12.5 4.1,8.2 1,5.4 5.2,5"/></svg>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="#C9A84C" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="7,1 8.8,5 13,5.4 9.9,8.2 10.9,12.5 7,10.2 3.1,12.5 4.1,8.2 1,5.4 5.2,5"/></svg>
-          </div>
-          <div class="testimonial-quote">"</div>
-          <p class="testimonial-text">I was completely lost when it came to getting a website. Equinox built one for me before I spent a single dollar, and it looked better than anything I had seen from other agencies. Getting customers to call me online has been a total game changer for my business.</p>
-          <div class="testimonial-divider"></div>
-          <div class="testimonial-name">Marcus R.</div>
-          <div class="testimonial-business">Independent Electrician</div>
-        </div>
-
-        <!-- Testimonial 2 -->
-        <div class="testimonial-card reveal reveal-delay-1">
-          <div class="testimonial-stars" aria-label="5 stars">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="#C9A84C" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="7,1 8.8,5 13,5.4 9.9,8.2 10.9,12.5 7,10.2 3.1,12.5 4.1,8.2 1,5.4 5.2,5"/></svg>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="#C9A84C" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="7,1 8.8,5 13,5.4 9.9,8.2 10.9,12.5 7,10.2 3.1,12.5 4.1,8.2 1,5.4 5.2,5"/></svg>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="#C9A84C" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="7,1 8.8,5 13,5.4 9.9,8.2 10.9,12.5 7,10.2 3.1,12.5 4.1,8.2 1,5.4 5.2,5"/></svg>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="#C9A84C" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="7,1 8.8,5 13,5.4 9.9,8.2 10.9,12.5 7,10.2 3.1,12.5 4.1,8.2 1,5.4 5.2,5"/></svg>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="#C9A84C" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="7,1 8.8,5 13,5.4 9.9,8.2 10.9,12.5 7,10.2 3.1,12.5 4.1,8.2 1,5.4 5.2,5"/></svg>
-          </div>
-          <div class="testimonial-quote">"</div>
-          <p class="testimonial-text">We had an old website that was embarrassing to share. Equinox redesigned it from scratch and showed us the finished product before we paid anything. We have been on their monthly plan for over a year and they are incredibly responsive whenever we need a change.</p>
-          <div class="testimonial-divider"></div>
-          <div class="testimonial-name">Diane T.</div>
-          <div class="testimonial-business">Owner, Pinecrest Day Spa</div>
-        </div>
-
-        <!-- Testimonial 3 -->
-        <div class="testimonial-card reveal reveal-delay-2">
-          <div class="testimonial-stars" aria-label="5 stars">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="#C9A84C" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="7,1 8.8,5 13,5.4 9.9,8.2 10.9,12.5 7,10.2 3.1,12.5 4.1,8.2 1,5.4 5.2,5"/></svg>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="#C9A84C" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="7,1 8.8,5 13,5.4 9.9,8.2 10.9,12.5 7,10.2 3.1,12.5 4.1,8.2 1,5.4 5.2,5"/></svg>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="#C9A84C" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="7,1 8.8,5 13,5.4 9.9,8.2 10.9,12.5 7,10.2 3.1,12.5 4.1,8.2 1,5.4 5.2,5"/></svg>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="#C9A84C" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="7,1 8.8,5 13,5.4 9.9,8.2 10.9,12.5 7,10.2 3.1,12.5 4.1,8.2 1,5.4 5.2,5"/></svg>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="#C9A84C" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="7,1 8.8,5 13,5.4 9.9,8.2 10.9,12.5 7,10.2 3.1,12.5 4.1,8.2 1,5.4 5.2,5"/></svg>
-          </div>
-          <div class="testimonial-quote">"</div>
-          <p class="testimonial-text">I was sceptical about the free build offer, but they really did deliver a complete professional site at no cost. Once I saw what they built, signing up for the monthly plan was an obvious decision. My restaurant now gets booking enquiries directly through the website every week.</p>
-          <div class="testimonial-divider"></div>
-          <div class="testimonial-name">Carlos M.</div>
-          <div class="testimonial-business">Owner, Casa Verde Kitchen</div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- =============================================
-       PRICING
-  ============================================= -->
-  <section id="pricing" aria-label="Pricing Plans">
-    <div class="container">
-      <div class="pricing-header">
-        <span class="section-label reveal">Pricing</span>
-        <h2 class="section-title reveal reveal-delay-1">Transparent, simple pricing.</h2>
-        <p class="section-subtitle reveal reveal-delay-2">All plans include your free website build. Choose the level of support and growth that suits your business.</p>
-      </div>
-
-      <div class="pricing-grid">
-
-        <!-- Starter -->
-        <div class="pricing-card reveal">
-          <div class="pricing-tier">Starter</div>
-          <div class="pricing-price">
-            <span class="price-currency">$</span>
-            <span class="price-amount">97</span>
-            <span class="price-period">/month</span>
-          </div>
-          <p class="pricing-description">Everything you need to get your business online and keep it there. Perfect for businesses just getting started.</p>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="8" cy="8" r="7" stroke="#C9A84C" stroke-width="1.2"/>
-                <path d="M5 8l2 2 4-4" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Professional website hosting
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="8" cy="8" r="7" stroke="#C9A84C" stroke-width="1.2"/>
-                <path d="M5 8l2 2 4-4" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              1 content update per month
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="8" cy="8" r="7" stroke="#C9A84C" stroke-width="1.2"/>
-                <path d="M5 8l2 2 4-4" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              SSL certificate included
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="8" cy="8" r="7" stroke="#C9A84C" stroke-width="1.2"/>
-                <path d="M5 8l2 2 4-4" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Email support
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="8" cy="8" r="7" stroke="#C9A84C" stroke-width="1.2"/>
-                <path d="M5 8l2 2 4-4" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Mobile-optimised website
-            </li>
-          </ul>
-          <a href="#contact" class="btn btn-outline">Get Started</a>
-        </div>
-
-        <!-- Growth (featured) -->
-        <div class="pricing-card featured reveal reveal-delay-1">
-          <div class="pricing-badge">Most Popular</div>
-          <div class="pricing-tier">Growth</div>
-          <div class="pricing-price">
-            <span class="price-currency">$</span>
-            <span class="price-amount">147</span>
-            <span class="price-period">/month</span>
-          </div>
-          <p class="pricing-description">The most popular choice for growing businesses that want more updates, SEO visibility, and faster support.</p>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="8" cy="8" r="7" stroke="#C9A84C" stroke-width="1.2"/>
-                <path d="M5 8l2 2 4-4" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Everything in Starter
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="8" cy="8" r="7" stroke="#C9A84C" stroke-width="1.2"/>
-                <path d="M5 8l2 2 4-4" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Unlimited content updates
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="8" cy="8" r="7" stroke="#C9A84C" stroke-width="1.2"/>
-                <path d="M5 8l2 2 4-4" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Local SEO basics included
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="8" cy="8" r="7" stroke="#C9A84C" stroke-width="1.2"/>
-                <path d="M5 8l2 2 4-4" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Google Business Profile setup
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="8" cy="8" r="7" stroke="#C9A84C" stroke-width="1.2"/>
-                <path d="M5 8l2 2 4-4" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Priority email support
-            </li>
-          </ul>
-          <a href="#contact" class="btn btn-primary">Get Started</a>
-        </div>
-
-        <!-- Pro -->
-        <div class="pricing-card reveal reveal-delay-2">
-          <div class="pricing-tier">Pro</div>
-          <div class="pricing-price">
-            <span class="price-currency">$</span>
-            <span class="price-amount">197</span>
-            <span class="price-period">/month</span>
-          </div>
-          <p class="pricing-description">For businesses ready to invest in consistent growth, paid traffic, and dedicated strategic support.</p>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="8" cy="8" r="7" stroke="#C9A84C" stroke-width="1.2"/>
-                <path d="M5 8l2 2 4-4" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Everything in Growth
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="8" cy="8" r="7" stroke="#C9A84C" stroke-width="1.2"/>
-                <path d="M5 8l2 2 4-4" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Google Ads campaign setup
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="8" cy="8" r="7" stroke="#C9A84C" stroke-width="1.2"/>
-                <path d="M5 8l2 2 4-4" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Monthly performance report
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="8" cy="8" r="7" stroke="#C9A84C" stroke-width="1.2"/>
-                <path d="M5 8l2 2 4-4" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Dedicated account manager
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="8" cy="8" r="7" stroke="#C9A84C" stroke-width="1.2"/>
-                <path d="M5 8l2 2 4-4" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Fastest priority support
-            </li>
-          </ul>
-          <a href="#contact" class="btn btn-outline">Get Started</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- =============================================
-       FAQ
-  ============================================= -->
-  <section id="faq" aria-label="Frequently Asked Questions">
-    <div class="container">
-      <div class="faq-layout">
-
-        <div class="faq-sticky">
-          <span class="section-label reveal">FAQ</span>
-          <h2 class="section-title reveal reveal-delay-1">Common questions, honest answers.</h2>
-          <p class="section-subtitle reveal reveal-delay-2" style="max-width: 100%;">If you have a question that is not covered here, send us a message and we will get back to you quickly.</p>
-          <div style="margin-top: 36px;" class="reveal reveal-delay-3">
-            <a href="mailto:info.equinoxwebsolutions@gmail.com" class="btn btn-outline">Ask a Question</a>
-          </div>
-        </div>
-
-        <div>
-          <div class="faq-list" role="list">
-
-            <!-- FAQ 1 -->
-            <div class="faq-item" role="listitem">
-              <button class="faq-question" aria-expanded="false">
-                Is the website really free?
-                <div class="faq-icon" aria-hidden="true">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    <line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  </svg>
-                </div>
-              </button>
-              <div class="faq-answer">
-                <p>Yes, genuinely. We design and build your complete website at no upfront cost. You get to review the finished site, request revisions, and only start paying a monthly plan once you are satisfied with what we have created. There is no catch, no hidden fee, and no obligation to sign up if you change your mind after seeing the result.</p>
-              </div>
-            </div>
-
-            <!-- FAQ 2 -->
-            <div class="faq-item" role="listitem">
-              <button class="faq-question" aria-expanded="false">
-                How long does it take to build?
-                <div class="faq-icon" aria-hidden="true">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    <line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  </svg>
-                </div>
-              </button>
-              <div class="faq-answer">
-                <p>Most websites are ready for your first review within 48 to 72 hours. Once you have reviewed the design and provided feedback, we typically complete any revisions within 24 hours. The full process from first contact to a live website is usually completed within one week, though we work at whatever pace suits you.</p>
-              </div>
-            </div>
-
-            <!-- FAQ 3 -->
-            <div class="faq-item" role="listitem">
-              <button class="faq-question" aria-expanded="false">
-                What do I need to provide?
-                <div class="faq-icon" aria-hidden="true">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    <line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  </svg>
-                </div>
-              </button>
-              <div class="faq-answer">
-                <p>We keep this as simple as possible. A brief description of your business, the services you offer, any photos you have, and your contact details are all we need to get started. If you do not have photos, we can source professional stock imagery that fits your business. No technical knowledge is required from you at any stage.</p>
-              </div>
-            </div>
-
-            <!-- FAQ 4 -->
-            <div class="faq-item" role="listitem">
-              <button class="faq-question" aria-expanded="false">
-                Can I cancel my monthly plan?
-                <div class="faq-icon" aria-hidden="true">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    <line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  </svg>
-                </div>
-              </button>
-              <div class="faq-answer">
-                <p>You can cancel at any time with 30 days notice. There are no long-term contracts or cancellation fees. If you do decide to leave, your website files and content belong to you and we will transfer everything you need to take it elsewhere. We want clients who stay because they love the service, not because they are locked in.</p>
-              </div>
-            </div>
-
-            <!-- FAQ 5 -->
-            <div class="faq-item" role="listitem">
-              <button class="faq-question" aria-expanded="false">
-                Will my website work on mobile?
-                <div class="faq-icon" aria-hidden="true">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    <line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  </svg>
-                </div>
-              </button>
-              <div class="faq-answer">
-                <p>Absolutely. Every website we build is fully responsive and tested across a wide range of screen sizes, from small smartphones to large desktop monitors. Mobile-first design is not an optional extra for us, it is the default. Given that most local business searches happen on mobile devices, this is non-negotiable for us.</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- =============================================
-       CONTACT / CTA
-  ============================================= -->
-  <section id="contact" aria-label="Contact and Call to Action">
-    <div class="contact-bg-glow" aria-hidden="true"></div>
-    <div class="container">
-      <div class="contact-inner">
-        <span class="section-label reveal">Get In Touch</span>
-        <h2 class="section-title reveal reveal-delay-1">Ready to grow your business online?</h2>
-        <p class="section-subtitle reveal reveal-delay-2">
-          We will design your website, show it to you, and let you decide. No upfront cost, no pressure, no risk. The first step is a quick conversation.
-        </p>
-        <div class="contact-buttons reveal reveal-delay-3">
-          <button id="calendlyToggle" class="btn btn-primary">Book a Free Call</button>
-          <a href="mailto:info.equinoxwebsolutions@gmail.com?subject=Website Enquiry" class="btn btn-outline">Contact Us</a>
-        </div>
-
-        <div id="calendlyContainer" style="display:none; width:100%; max-width:900px; margin:40px auto 0; border-radius:16px; overflow:hidden; border:1px solid rgba(201,168,76,0.2);">
-          <div
-            class="calendly-inline-widget"
-            data-url="https://calendly.com/info-equinoxwebsolutions/30min?background_color=1c1c1c&text_color=d4d4d4&primary_color=C9A84C"
-            id="calendlyWidget"
-            style="min-width:320px; height:800px;">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =============================================
-       FOOTER
-  ============================================= -->
-  <footer id="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-top">
-
-        <!-- Brand -->
-        <div class="footer-brand">
-          <a href="#hero" class="nav-logo" aria-label="Equinox Web Solutions Home">
-            <div class="nav-logo-mark">
-              <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="21" cy="21" r="19.5" stroke="#C9A84C" stroke-width="1.2" opacity="0.5"/>
-                <line x1="4" y1="21" x2="38" y2="21" stroke="#C9A84C" stroke-width="1.4"/>
-                <circle cx="21" cy="21" r="6.5" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
-                <circle cx="21" cy="21" r="2.5" fill="#C9A84C"/>
-                <path d="M10 21 A11 11 0 0 1 32 21" fill="none" stroke="#ffffff" stroke-width="1.2" opacity="0.7"/>
-                <path d="M10 21 A11 11 0 0 0 32 21" fill="none" stroke="#C9A84C" stroke-width="1.2" opacity="0.5"/>
-              </svg>
-            </div>
-            <div class="nav-logo-text">
-              <span class="wordmark-top">Equinox</span>
-              <span class="wordmark-bottom">Web Solutions</span>
-            </div>
-          </a>
-          <p class="footer-tagline">Professional websites for small businesses across the United States. Built free, maintained affordably.</p>
-        </div>
-
-        <!-- Social icons -->
-        <div class="footer-socials" aria-label="Social media links">
-
-          <!-- WhatsApp -->
-          <a href="https://wa.me/" class="social-link" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#C9A84C"/>
-              <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.985-1.418A9.945 9.945 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.943 7.943 0 0 1-4.049-1.112l-.29-.173-3.006.855.854-2.928-.19-.303A7.944 7.944 0 0 1 4 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z" fill="#C9A84C"/>
-            </svg>
-          </a>
-
-          <!-- Instagram -->
-          <a href="https://instagram.com/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="2" y="2" width="20" height="20" rx="5" stroke="#C9A84C" stroke-width="1.6"/>
-              <circle cx="12" cy="12" r="4" stroke="#C9A84C" stroke-width="1.6"/>
-              <circle cx="17.5" cy="6.5" r="1" fill="#C9A84C"/>
-            </svg>
-          </a>
-
-          <!-- X (Twitter) -->
-          <a href="https://x.com/" class="social-link" aria-label="X (Twitter)" target="_blank" rel="noopener noreferrer">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="#C9A84C"/>
-            </svg>
-          </a>
-
-          <!-- Facebook -->
-          <a href="https://facebook.com/" class="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M24 12c0-6.627-5.373-12-12-12S0 5.373 0 12c0 5.99 4.388 10.954 10.125 11.854V15.47H7.078V12h3.047V9.356c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874V12h3.328l-.532 3.47h-2.796v8.385C19.612 22.954 24 17.99 24 12z" fill="#C9A84C"/>
-            </svg>
-          </a>
-
-          <!-- YouTube -->
-          <a href="https://youtube.com/" class="social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="#C9A84C"/>
-            </svg>
-          </a>
-
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p class="footer-copyright">2025 Equinox Web Solutions. All rights reserved.</p>
+    <div class="footer-bottom">
+      <p>© 2026 Equinox Web Solutions. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#pricing">Pricing</a>
       </div>
     </div>
   </footer>
 
-  <!-- =============================================
-       JAVASCRIPT
-  ============================================= -->
-  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-  <script>
-    // Mark body as JS-ready so reveal animations activate
-    document.body.classList.add('js-ready');
-
-    // Auto-resize Calendly widget to match its content height
-    window.addEventListener('message', function (e) {
-      if (e.data && e.data.event === 'calendly.page_height') {
-        const widget = document.getElementById('calendlyWidget');
-        if (widget) widget.style.height = e.data.payload.height + 'px';
-      }
+  <script type="module">
+    // ── Mobile nav toggle ──
+    const navToggle = document.getElementById('navToggle');
+    const navMobilePanel = document.getElementById('navMobilePanel');
+    const navToggleIcon = document.getElementById('navToggleIcon');
+    navToggle.addEventListener('click', () => {
+      const isOpen = navMobilePanel.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      navToggleIcon.innerHTML = isOpen
+        ? '<path d="M6 6l12 12M18 6L6 18"/>'
+        : '<path d="M4 7h16M4 12h16M4 17h16"/>';
     });
-
-    // ---- Calendly toggle ----
-    const calendlyToggle = document.getElementById('calendlyToggle');
-    const calendlyContainer = document.getElementById('calendlyContainer');
-    let calendlyLoaded = false;
-
-    calendlyToggle.addEventListener('click', function () {
-      const isVisible = calendlyContainer.style.display !== 'none';
-      if (isVisible) {
-        calendlyContainer.style.display = 'none';
-        calendlyToggle.textContent = 'Book a Free Call';
-      } else {
-        calendlyContainer.style.display = 'block';
-        calendlyToggle.textContent = 'Hide Booking Form';
-        if (!calendlyLoaded) {
-          Calendly.initInlineWidget({
-            url: 'https://calendly.com/info-equinoxwebsolutions/30min?background_color=1c1c1c&text_color=d4d4d4&primary_color=C9A84C',
-            parentElement: calendlyContainer.querySelector('.calendly-inline-widget'),
-          });
-          calendlyLoaded = true;
-        }
-        setTimeout(() => {
-          calendlyContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
-      }
-    });
-
-    // ---- Navigation: scroll shrink + mobile menu ----
-    const nav = document.getElementById('nav');
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 40) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-    }, { passive: true });
-
-    hamburgerBtn.addEventListener('click', () => {
-      const isOpen = mobileMenu.classList.toggle('open');
-      hamburgerBtn.classList.toggle('open', isOpen);
-      hamburgerBtn.setAttribute('aria-expanded', isOpen);
-      mobileMenu.setAttribute('aria-hidden', !isOpen);
-    });
-
-    // Close mobile menu on link click
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-        hamburgerBtn.classList.remove('open');
-        hamburgerBtn.setAttribute('aria-expanded', 'false');
-        mobileMenu.setAttribute('aria-hidden', 'true');
+    navMobilePanel.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navMobilePanel.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggleIcon.innerHTML = '<path d="M4 7h16M4 12h16M4 17h16"/>';
       });
     });
 
-    // ---- Scroll Reveal via Intersection Observer ----
-    const revealEls = document.querySelectorAll('.reveal');
-
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
+    // ── Work tabs ──
+    const tabs = document.querySelectorAll('.work-tab');
+    const panels = document.querySelectorAll('.work-panel');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const id = tab.getAttribute('data-tab');
+        tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+        panels.forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        document.querySelector('.work-panel[data-panel="' + id + '"]').classList.add('active');
       });
-    }, {
-      threshold: 0.12,
-      rootMargin: '0px 0px -40px 0px'
     });
 
-    revealEls.forEach(el => revealObserver.observe(el));
+    // ── Logo loop (tools) ──
+    // Self-contained badges (no external icon requests) so nothing can fail to load.
+    const tools = [
+      { slug: 'html5', color: 'E34F26', name: 'HTML5' },
+      { slug: 'css3', color: '1572B6', name: 'CSS3' },
+      { slug: 'javascript', color: 'F7DF1E', name: 'JavaScript' },
+      { slug: 'react', color: '61DAFB', name: 'React' },
+      { slug: 'typescript', color: '3178C6', name: 'TypeScript' },
+      { slug: 'angular', color: 'DD0031', name: 'Angular' },
+      { slug: 'tailwindcss', color: '06B6D4', name: 'Tailwind CSS' },
+      { slug: 'visualstudiocode', color: '007ACC', name: 'VS Code' },
+      { slug: 'github', color: 'FFFFFF', name: 'GitHub' },
+      { slug: 'supabase', color: '3ECF8E', name: 'Supabase' },
+      { slug: 'vercel', color: 'FFFFFF', name: 'Vercel' }
+    ];
+    const track = document.getElementById('logoLoopTrack');
+    function buildLogoList() {
+      const ul = document.createElement('div');
+      ul.className = 'logoloop-list';
+      tools.forEach(t => {
+        const item = document.createElement('div');
+        item.className = 'logoloop-item';
+        item.innerHTML = '<img src="https://cdn.simpleicons.org/' + t.slug + '/' + t.color + '" alt="' + t.name + '" loading="lazy" />';
+        ul.appendChild(item);
+      });
+      return ul;
+    }
+    track.appendChild(buildLogoList());
+    track.appendChild(buildLogoList());
 
-    // ---- FAQ Accordion ----
-    const faqItems = document.querySelectorAll('.faq-item');
+    // ── Scroll reveal ──
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
 
-    faqItems.forEach(item => {
-      const btn = item.querySelector('.faq-question');
+    // ── Hero ColorBends effect ──
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const bendsContainer = document.getElementById('heroBends');
 
-      btn.addEventListener('click', () => {
-        const isOpen = item.classList.contains('open');
+    if (!prefersReducedMotion) {
+      try {
+        const THREE = await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js');
 
-        // Close all others
-        faqItems.forEach(other => {
-          if (other !== item) {
-            other.classList.remove('open');
-            other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        const MAX_COLORS = 8;
+        const vert = `
+          varying vec2 vUv;
+          void main() {
+            vUv = uv;
+            gl_Position = vec4(position, 1.0);
           }
+        `;
+        const frag = `
+          #define MAX_COLORS ${MAX_COLORS}
+          uniform vec2 uCanvas;
+          uniform float uTime;
+          uniform float uSpeed;
+          uniform vec2 uRot;
+          uniform int uColorCount;
+          uniform vec3 uColors[MAX_COLORS];
+          uniform int uTransparent;
+          uniform float uScale;
+          uniform float uFrequency;
+          uniform float uWarpStrength;
+          uniform vec2 uPointer;
+          uniform float uMouseInfluence;
+          uniform float uParallax;
+          uniform float uNoise;
+          uniform int uIterations;
+          uniform float uIntensity;
+          uniform float uBandWidth;
+          varying vec2 vUv;
+
+          void main() {
+            float t = uTime * uSpeed;
+            vec2 p = vUv * 2.0 - 1.0;
+            p += uPointer * uParallax * 0.1;
+            vec2 rp = vec2(p.x * uRot.x - p.y * uRot.y, p.x * uRot.y + p.y * uRot.x);
+            vec2 q = vec2(rp.x * (uCanvas.x / uCanvas.y), rp.y);
+            q /= max(uScale, 0.0001);
+            q /= 0.5 + 0.2 * dot(q, q);
+            q += 0.2 * cos(t) - 7.56;
+            vec2 toward = (uPointer - rp);
+            q += toward * uMouseInfluence * 0.2;
+
+            for (int j = 0; j < 5; j++) {
+              if (j >= uIterations - 1) break;
+              vec2 rr = sin(1.5 * (q.yx * uFrequency) + 2.0 * cos(q * uFrequency));
+              q += (rr - q) * 0.15;
+            }
+
+            vec3 col = vec3(0.0);
+            float a = 1.0;
+
+            if (uColorCount > 0) {
+              vec2 s = q;
+              vec3 sumCol = vec3(0.0);
+              float cover = 0.0;
+              for (int i = 0; i < MAX_COLORS; ++i) {
+                if (i >= uColorCount) break;
+                s -= 0.01;
+                vec2 r = sin(1.5 * (s.yx * uFrequency) + 2.0 * cos(s * uFrequency));
+                float m0 = length(r + sin(5.0 * r.y * uFrequency - 3.0 * t + float(i)) / 4.0);
+                float kBelow = clamp(uWarpStrength, 0.0, 1.0);
+                float kMix = pow(kBelow, 0.3);
+                float gain = 1.0 + max(uWarpStrength - 1.0, 0.0);
+                vec2 disp = (r - s) * kBelow;
+                vec2 warped = s + disp * gain;
+                float m1 = length(warped + sin(5.0 * warped.y * uFrequency - 3.0 * t + float(i)) / 4.0);
+                float m = mix(m0, m1, kMix);
+                float w = 1.0 - exp(-uBandWidth / exp(uBandWidth * m));
+                sumCol += uColors[i] * w;
+                cover = max(cover, w);
+              }
+              col = clamp(sumCol, 0.0, 1.0);
+              a = uTransparent > 0 ? cover : 1.0;
+            } else {
+              vec2 s = q;
+              for (int k = 0; k < 3; ++k) {
+                s -= 0.01;
+                vec2 r = sin(1.5 * (s.yx * uFrequency) + 2.0 * cos(s * uFrequency));
+                float m0 = length(r + sin(5.0 * r.y * uFrequency - 3.0 * t + float(k)) / 4.0);
+                float kBelow = clamp(uWarpStrength, 0.0, 1.0);
+                float kMix = pow(kBelow, 0.3);
+                float gain = 1.0 + max(uWarpStrength - 1.0, 0.0);
+                vec2 disp = (r - s) * kBelow;
+                vec2 warped = s + disp * gain;
+                float m1 = length(warped + sin(5.0 * warped.y * uFrequency - 3.0 * t + float(k)) / 4.0);
+                float m = mix(m0, m1, kMix);
+                col[k] = 1.0 - exp(-uBandWidth / exp(uBandWidth * m));
+              }
+              a = uTransparent > 0 ? max(max(col.r, col.g), col.b) : 1.0;
+            }
+
+            col *= uIntensity;
+
+            if (uNoise > 0.0001) {
+              float n = fract(sin(dot(gl_FragCoord.xy + vec2(uTime), vec2(12.9898, 78.233))) * 43758.5453123);
+              col += (n - 0.5) * uNoise;
+              col = clamp(col, 0.0, 1.0);
+            }
+
+            vec3 rgb = (uTransparent > 0) ? col * a : col;
+            gl_FragColor = vec4(rgb, a);
+          }
+        `;
+
+        const opts = {
+          colors: ['#c9a227', '#7c5a17', '#100e0a'],
+          rotation: 90,
+          speed: 0.12,
+          scale: 1.5,
+          frequency: 1.05,
+          warpStrength: 1,
+          mouseInfluence: 0.5,
+          parallax: 0.25,
+          noise: 0.06,
+          iterations: 2,
+          intensity: 1.25,
+          bandWidth: 5,
+          transparent: false
+        };
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+        const geometry = new THREE.PlaneGeometry(2, 2);
+        const uColorsArray = Array.from({ length: MAX_COLORS }, () => new THREE.Vector3(0, 0, 0));
+
+        const toVec3 = hex => {
+          const h = hex.replace('#', '').trim();
+          const v = [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
+          return new THREE.Vector3(v[0] / 255, v[1] / 255, v[2] / 255);
+        };
+        const arr = opts.colors.map(toVec3);
+        arr.forEach((v, i) => uColorsArray[i].copy(v));
+
+        const material = new THREE.ShaderMaterial({
+          vertexShader: vert,
+          fragmentShader: frag,
+          uniforms: {
+            uCanvas: { value: new THREE.Vector2(1, 1) },
+            uTime: { value: 0 },
+            uSpeed: { value: opts.speed },
+            uRot: { value: new THREE.Vector2(1, 0) },
+            uColorCount: { value: arr.length },
+            uColors: { value: uColorsArray },
+            uTransparent: { value: opts.transparent ? 1 : 0 },
+            uScale: { value: opts.scale },
+            uFrequency: { value: opts.frequency },
+            uWarpStrength: { value: opts.warpStrength },
+            uPointer: { value: new THREE.Vector2(0, 0) },
+            uMouseInfluence: { value: opts.mouseInfluence },
+            uParallax: { value: opts.parallax },
+            uNoise: { value: opts.noise },
+            uIterations: { value: opts.iterations },
+            uIntensity: { value: opts.intensity },
+            uBandWidth: { value: opts.bandWidth }
+          },
+          transparent: true,
+          premultipliedAlpha: true
         });
 
-        // Toggle current
-        item.classList.toggle('open', !isOpen);
-        btn.setAttribute('aria-expanded', !isOpen);
-      });
-    });
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
 
-    // ---- Smooth scroll for anchor links ----
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', e => {
-        const target = document.querySelector(anchor.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          const offset = 80;
-          const top = target.getBoundingClientRect().top + window.scrollY - offset;
-          window.scrollTo({ top, behavior: 'smooth' });
+        const renderer = new THREE.WebGLRenderer({ antialias: false, powerPreference: 'high-performance', alpha: true });
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+        renderer.setClearColor(0x000000, opts.transparent ? 0 : 1);
+        renderer.domElement.style.width = '100%';
+        renderer.domElement.style.height = '100%';
+        renderer.domElement.style.display = 'block';
+        bendsContainer.appendChild(renderer.domElement);
+
+        function resize() {
+          const w = bendsContainer.clientWidth || window.innerWidth || 1;
+          const h = bendsContainer.clientHeight || window.innerHeight || 1;
+          renderer.setSize(w, h, false);
+          material.uniforms.uCanvas.value.set(w, h);
         }
-      });
-    });
-
-    // ---- Active nav link highlight on scroll ----
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
-
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          navLinks.forEach(link => {
-            const href = link.getAttribute('href').substring(1);
-            if (href === id) {
-              link.style.color = 'var(--gold)';
-            } else {
-              link.style.color = '';
-            }
-          });
+        resize();
+        window.addEventListener('resize', resize);
+        window.addEventListener('orientationchange', () => setTimeout(resize, 200));
+        if (window.ResizeObserver) {
+          new ResizeObserver(resize).observe(bendsContainer);
         }
-      });
-    }, { threshold: 0.4 });
+        if (window.visualViewport) {
+          window.visualViewport.addEventListener('resize', resize);
+        }
 
-    sections.forEach(section => sectionObserver.observe(section));
+        const pointerTarget = new THREE.Vector2(0, 0);
+        const pointerCurrent = new THREE.Vector2(0, 0);
+        function updatePointer(clientX, clientY) {
+          const rect = bendsContainer.getBoundingClientRect();
+          const x = ((clientX - rect.left) / (rect.width || 1)) * 2 - 1;
+          const y = -(((clientY - rect.top) / (rect.height || 1)) * 2 - 1);
+          pointerTarget.set(x, y);
+        }
+        bendsContainer.addEventListener('pointermove', e => updatePointer(e.clientX, e.clientY));
+        bendsContainer.addEventListener('touchmove', e => {
+          if (e.touches && e.touches[0]) updatePointer(e.touches[0].clientX, e.touches[0].clientY);
+        }, { passive: true });
+
+        const clock = new THREE.Clock();
+        function loop() {
+          const dt = clock.getDelta();
+          const elapsed = clock.elapsedTime;
+          material.uniforms.uTime.value = elapsed;
+
+          const rad = (opts.rotation * Math.PI) / 180;
+          material.uniforms.uRot.value.set(Math.cos(rad), Math.sin(rad));
+
+          pointerCurrent.lerp(pointerTarget, Math.min(1, dt * 8));
+          material.uniforms.uPointer.value.copy(pointerCurrent);
+
+          renderer.render(scene, camera);
+          requestAnimationFrame(loop);
+        }
+        requestAnimationFrame(loop);
+      } catch (err) {
+        console.warn('ColorBends effect could not load, using CSS fallback background.', err);
+      }
+    }
   </script>
-
 </body>
 </html>
