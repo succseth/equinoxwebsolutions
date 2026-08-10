@@ -360,40 +360,6 @@
     margin-bottom: 1.5rem;
   }
 
-  /* ── LOGO LOOP (tools) ── */
-  .tools-section { padding-top: 4rem; padding-bottom: 4rem; }
-  .tools-label {
-    text-align: center;
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--text-dim);
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-  }
-  .logoloop {
-    position: relative;
-    overflow: hidden;
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-    mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-  }
-  .logoloop-track {
-    display: flex;
-    align-items: center;
-    width: max-content;
-    animation: loop-scroll 32s linear infinite;
-  }
-  .logoloop-list { display: flex; align-items: center; }
-  .logoloop-item {
-    flex: 0 0 auto;
-    margin-right: 3.5rem;
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0.85;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-  }
-  .logoloop-item:hover { opacity: 1; transform: scale(1.12); }
-  .logoloop-item img { height: 32px; width: auto; }
-  @keyframes loop-scroll { to { transform: translate3d(-50%, 0, 0); } }
 
   /* ── PRICING ── */
   .pricing-grid {
@@ -566,8 +532,7 @@
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
   @media (prefers-reduced-motion: reduce) {
-    .logoloop-track { animation: none; }
-    .logo-mark .ring-outer, .logo-mark .ring-inner { animation: none; }
+.logo-mark .ring-outer, .logo-mark .ring-inner { animation: none; }
     .reveal { transition: none; opacity: 1; transform: none; }
   }
 
@@ -675,18 +640,6 @@
         </div>
         <h3>SEO and Google Presence</h3>
         <p>We optimise your site so local customers can actually find you on Google. From technical SEO to Google Business Profile setup, we make sure you show up where it matters.</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- TOOLS LOGO LOOP -->
-  <section class="tools-section">
-    <div class="tools-label reveal">Built with the tools trusted by modern web teams</div>
-    <div class="logoloop reveal">
-      <div class="logoloop-track" id="logoLoopTrack">
-        <!-- populated by JS (two copies for seamless loop) -->
       </div>
     </div>
   </section>
@@ -923,37 +876,6 @@
         document.querySelector('.work-panel[data-panel="' + id + '"]').classList.add('active');
       });
     });
-
-    // ── Logo loop (tools) ──
-    // Self-contained badges (no external icon requests) so nothing can fail to load.
-    const tools = [
-      { slug: 'html5', color: 'E34F26', name: 'HTML5' },
-      { slug: 'css', color: '1572B6', name: 'CSS3' },
-      { slug: 'javascript', color: 'F7DF1E', name: 'JavaScript' },
-      { slug: 'react', color: '61DAFB', name: 'React' },
-      { slug: 'typescript', color: '3178C6', name: 'TypeScript' },
-      { slug: 'angular', color: 'DD0031', name: 'Angular' },
-      { slug: 'tailwindcss', color: '06B6D4', name: 'Tailwind CSS' },
-      { url: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg', name: 'VS Code' },
-      { slug: 'github', color: 'FFFFFF', name: 'GitHub' },
-      { slug: 'supabase', color: '3ECF8E', name: 'Supabase' },
-      { slug: 'vercel', color: 'FFFFFF', name: 'Vercel' }
-    ];
-    const track = document.getElementById('logoLoopTrack');
-    function buildLogoList() {
-      const ul = document.createElement('div');
-      ul.className = 'logoloop-list';
-      tools.forEach(t => {
-        const item = document.createElement('div');
-        item.className = 'logoloop-item';
-        const src = t.url || ('https://cdn.simpleicons.org/' + t.slug + '/' + t.color);
-        item.innerHTML = '<img src="' + src + '" alt="' + t.name + '" loading="lazy" />';
-        ul.appendChild(item);
-      });
-      return ul;
-    }
-    track.appendChild(buildLogoList());
-    track.appendChild(buildLogoList());
 
     // ── Scroll reveal ──
     const reveals = document.querySelectorAll('.reveal');
